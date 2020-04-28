@@ -14,6 +14,7 @@ import net.sf.l2j.commons.mmocore.SelectorConfig;
 import net.sf.l2j.commons.mmocore.SelectorThread;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.Jhondev;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.loginserver.data.manager.GameServerManager;
 import net.sf.l2j.loginserver.data.manager.IpBanManager;
@@ -50,6 +51,7 @@ public class LoginServer
 			LogManager.getLogManager().readConfiguration(is);
 		}
 		
+		Jhondev.infoLS();
 		StringUtil.printSection("aCis");
 		
 		// Initialize config
