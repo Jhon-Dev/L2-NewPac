@@ -1207,6 +1207,55 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 		return getItem().isQuestItem();
 	}
 	
+	public boolean isItemList1()
+	{
+		return getItem().isItemList1();
+	}
+ 	
+	public int enchantBonusItemList1()
+	{
+		return getItem().enchantBonusItemList1();
+	}
+	
+	public boolean isItemList2()
+	{
+		return getItem().isItemList2();
+	}
+	
+	public int enchantBonusItemList2()
+	{
+		return getItem().enchantBonusItemList2();
+	}
+	
+	public boolean isItemList3()
+	{
+		return getItem().isItemList3();
+	}
+	
+	public int enchantBonusItemList3()
+	{
+		return getItem().enchantBonusItemList3();
+	}
+	
+	public boolean isItemList4()
+	{
+		return getItem().isItemList4();
+	}
+	
+	public int enchantBonusItemList4()
+	{
+		return getItem().enchantBonusItemList4();
+	}
+	
+	public boolean isItemList5()
+	{
+		return getItem().isItemList5();
+	}
+	
+	public int enchantBonusItemList5()
+	{
+		return getItem().enchantBonusItemList5();
+	}
 	@Override
 	public void decayMe()
 	{

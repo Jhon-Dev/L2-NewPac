@@ -34,6 +34,9 @@ public final class Config
 	public static final String PLAYERS_FILE = "./config/players.properties";
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
+	public static final String SERVER_CUSTOM = "./config/Custom/Mods/Server.properties";
+	public static final String ENCHANT_CUSTOM = "./config/Custom/Mods/Enchant.properties";
+
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -111,6 +114,124 @@ public final class Config
 	public static long CH_FRONT_FEE_RATIO;
 	public static int CH_FRONT1_FEE;
 	public static int CH_FRONT2_FEE;
+	
+	// --------------------------------------------------
+	// Enchant settings
+	// --------------------------------------------------
+	
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_ARMOR;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_JEWELRY;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_WEAPON;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_ARMOR;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_JEWELRY;
+	
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_1;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON_1;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_1;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_ARMOR_1;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_1;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_1;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_1;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_1;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_1;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_1;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_1;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_1;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_1;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_WEAPON_1;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_1;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_ARMOR_1;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_1;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_JEWELRY_1;
+	
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_2;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON_2;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_2;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_ARMOR_2;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_2;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_2;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_2;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_2;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_2;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_2;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_2;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_2;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_2;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_WEAPON_2;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_2;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_ARMOR_2;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_2;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_JEWELRY_2;
+	
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_3;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON_3;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_3;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_ARMOR_3;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_3;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_3;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_3;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_3;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_3;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_3;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_3;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_3;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_3;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_WEAPON_3;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_3;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_ARMOR_3;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_3;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_JEWELRY_3;
+	
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_4;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON_4;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_4;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_ARMOR_4;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_4;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_4;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_4;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_4;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_4;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_4;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_4;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_4;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_4;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_WEAPON_4;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_4;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_ARMOR_4;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_4;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_JEWELRY_4;
+	
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_5;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON_5;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_5;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_ARMOR_5;
+	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_5;
+	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_5;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_5;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_5;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_5;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_5;
+	public static boolean ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_5;
+	public static Map<Integer, Integer> CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_5;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_5;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_WEAPON_5;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_5;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_ARMOR_5;
+	public static boolean ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_5;
+	public static Map<Integer, Integer> ENCHANT_CHANCE_LIST_JEWELRY_5;
 	
 	// --------------------------------------------------
 	// Events settings
@@ -284,6 +405,9 @@ public final class Config
 	public static boolean SHOW_NPC_CREST;
 	public static boolean SHOW_SUMMON_CREST;
 	
+	/** Misc Custom */
+	public static boolean FORCE_INVENTORY_UPDATE;
+	
 	/** Wyvern Manager */
 	public static boolean WYVERN_ALLOW_UPGRADER;
 	public static int WYVERN_REQUIRED_LEVEL;
@@ -371,13 +495,19 @@ public final class Config
 	public static int ALT_GAME_FREIGHT_PRICE;
 	
 	/** Enchant */
-	public static double ENCHANT_CHANCE_WEAPON_MAGIC;
-	public static double ENCHANT_CHANCE_WEAPON_MAGIC_15PLUS;
-	public static double ENCHANT_CHANCE_WEAPON_NONMAGIC;
-	public static double ENCHANT_CHANCE_WEAPON_NONMAGIC_15PLUS;
-	public static double ENCHANT_CHANCE_ARMOR;
+	public static int BLESSED_ENCHANT_CHANCE_WEAPON;
+	public static int BLESSED_ENCHANT_CHANCE_ARMOR;
+	public static int BLESSED_ENCHANT_CHANCE_JEWELRY;
+	public static int CRYSTAL_ENCHANT_CHANCE_WEAPON;
+	public static int CRYSTAL_ENCHANT_CHANCE_ARMOR;
+	public static int CRYSTAL_ENCHANT_CHANCE_JEWELRY;
+	public static int ENCHANT_CHANCE_WEAPON;
+	public static int ENCHANT_CHANCE_ARMOR;
+	public static int ENCHANT_CHANCE_JEWELRY;
+	
 	public static int ENCHANT_MAX_WEAPON;
 	public static int ENCHANT_MAX_ARMOR;
+	public static int ENCHANT_MAX_JEWELRY;
 	public static int ENCHANT_SAFE_MAX;
 	public static int ENCHANT_SAFE_MAX_FULL;
 	
@@ -1005,17 +1135,7 @@ public final class Config
 		FREIGHT_SLOTS = players.getProperty("MaximumFreightSlots", 20);
 		ALT_GAME_FREIGHTS = players.getProperty("AltGameFreights", false);
 		ALT_GAME_FREIGHT_PRICE = players.getProperty("AltGameFreightPrice", 1000);
-		
-		ENCHANT_CHANCE_WEAPON_MAGIC = players.getProperty("EnchantChanceMagicWeapon", 0.4);
-		ENCHANT_CHANCE_WEAPON_MAGIC_15PLUS = players.getProperty("EnchantChanceMagicWeapon15Plus", 0.2);
-		ENCHANT_CHANCE_WEAPON_NONMAGIC = players.getProperty("EnchantChanceNonMagicWeapon", 0.7);
-		ENCHANT_CHANCE_WEAPON_NONMAGIC_15PLUS = players.getProperty("EnchantChanceNonMagicWeapon15Plus", 0.35);
-		ENCHANT_CHANCE_ARMOR = players.getProperty("EnchantChanceArmor", 0.66);
-		ENCHANT_MAX_WEAPON = players.getProperty("EnchantMaxWeapon", 0);
-		ENCHANT_MAX_ARMOR = players.getProperty("EnchantMaxArmor", 0);
-		ENCHANT_SAFE_MAX = players.getProperty("EnchantSafeMax", 3);
-		ENCHANT_SAFE_MAX_FULL = players.getProperty("EnchantSafeMaxFull", 4);
-		
+				
 		AUGMENTATION_NG_SKILL_CHANCE = players.getProperty("AugmentationNGSkillChance", 15);
 		AUGMENTATION_NG_GLOW_CHANCE = players.getProperty("AugmentationNGGlowChance", 0);
 		AUGMENTATION_MID_SKILL_CHANCE = players.getProperty("AugmentationMidSkillChance", 30);
@@ -1299,6 +1419,1383 @@ public final class Config
 		MAX_CONNECTION_PER_IP = server.getProperty("MaxConnectionPerIP", 50);
 	}
 	
+	private static final void CustomServerLoad()
+	{
+		final ExProperties CustomServer = initProperties(SERVER_CUSTOM);
+		FORCE_INVENTORY_UPDATE =  Boolean.valueOf(CustomServer.getProperty("ForceInventoryUpdate", "False"));
+	}
+	
+	private static final void CustomEchant()
+	{
+		final ExProperties Enchant = initProperties(ENCHANT_CUSTOM);
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_WEAPON = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListWeapon", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListWeapon]: invalid config property -> BlessedEnchantChanceListWeapon \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_WEAPON.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListWeapon]: invalid config property -> BlessedEnchantListWeapon \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceArmor", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_ARMOR = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListArmor", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListArmor]: invalid config property -> BlessedEnchantChanceListArmor \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_ARMOR.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListArmor]: invalid config property -> BlessedEnchantListArmor \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceJewelry", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_JEWELRY = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListJewelry", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListJewelry]: invalid config property -> BlessedEnchantChanceListJewelry \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_JEWELRY.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListJewelry]: invalid config property -> BlessedEnchantListJewelry \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceWeapon", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListWeapon", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListWeapon]: invalid config property -> CrystalEnchantChanceListWeapon \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListWeapon]: invalid config property -> CrystalEnchantListWeapon \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceArmor", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListArmor", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListArmor]: invalid config property -> CrystalEnchantChanceListArmor \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListArmor]: invalid config property -> CrystalEnchantListArmor \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceJewelry", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListJewelry", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListJewelry]: invalid config property -> CrystalEnchantChanceListJewelry \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListJewelry]: invalid config property -> CrystalEnchantListJewelry \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceWeapon", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON)
+		{
+			ENCHANT_CHANCE_LIST_WEAPON = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListWeapon", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListWeapon]: invalid config property -> EnchantChanceListWeapon \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_WEAPON.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListWeapon]: invalid config property -> EnchantListWeapon \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceArmor", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR)
+		{
+			ENCHANT_CHANCE_LIST_ARMOR = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListArmor", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListArmor]: invalid config property -> EnchantChanceListArmor \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_ARMOR.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListArmor]: invalid config property -> EnchantListArmor \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceJewelry", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY)
+		{
+			ENCHANT_CHANCE_LIST_JEWELRY = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListJewelry", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListJewelry]: invalid config property -> EnchantChanceListJewelry \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_JEWELRY.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListJewelry]: invalid config property -> EnchantListJewelry \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon1", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_1)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_WEAPON_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListWeapon1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListWeapon1]: invalid config property -> BlessedEnchantChanceListWeapon1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_WEAPON_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListWeapon1]: invalid config property -> BlessedEnchantListWeapon1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceArmor1", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_1)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_ARMOR_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListArmor1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListArmor1]: invalid config property -> BlessedEnchantChanceListArmor1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_ARMOR_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListArmor1]: invalid config property -> BlessedEnchantListArmor1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceJewelry1", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_1)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListJewelry1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListJewelry1]: invalid config property -> BlessedEnchantChanceListJewelry1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListJewelry1]: invalid config property -> BlessedEnchantListJewelry1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceWeapon1", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_1)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListWeapon1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListWeapon1]: invalid config property -> CrystalEnchantChanceListWeapon1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListWeapon1]: invalid config property -> CrystalEnchantListWeapon1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceArmor1", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_1)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListArmor1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListArmor1]: invalid config property -> CrystalEnchantChanceListArmor1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListArmor1]: invalid config property -> CrystalEnchantListArmor1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceJewelry1", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_1)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListJewelry1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListJewelry1]: invalid config property -> CrystalEnchantChanceListJewelry1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListJewelry1]: invalid config property -> CrystalEnchantListJewelry1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceWeapon1", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_1)
+		{
+			ENCHANT_CHANCE_LIST_WEAPON_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListWeapon1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListWeapon1]: invalid config property -> EnchantChanceListWeapon1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_WEAPON_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListWeapon1]: invalid config property -> EnchantListWeapon1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceArmor1", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_1)
+		{
+			ENCHANT_CHANCE_LIST_ARMOR_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListArmor1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListArmor1]: invalid config property -> EnchantChanceListArmor1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_ARMOR_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListArmor1]: invalid config property -> EnchantListArmor1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_1 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceJewelry1", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_1)
+		{
+			ENCHANT_CHANCE_LIST_JEWELRY_1 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListJewelry1", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListJewelry1]: invalid config property -> EnchantChanceListJewelry1 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_JEWELRY_1.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListJewelry1]: invalid config property -> EnchantListJewelry1 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon2", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_2)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_WEAPON_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListWeapon2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListWeapon2]: invalid config property -> BlessedEnchantChanceListWeapon2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_WEAPON_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListWeapon2]: invalid config property -> BlessedEnchantListWeapon2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceArmor2", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_2)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_ARMOR_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListArmor2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListArmor2]: invalid config property -> BlessedEnchantChanceListArmor2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_ARMOR_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListArmor2]: invalid config property -> BlessedEnchantListArmor2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceJewelry2", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_2)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListJewelry2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListJewelry2]: invalid config property -> BlessedEnchantChanceListJewelry2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListJewelry2]: invalid config property -> BlessedEnchantListJewelry2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceWeapon2", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_2)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListWeapon2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListWeapon2]: invalid config property -> CrystalEnchantChanceListWeapon2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListWeapon2]: invalid config property -> CrystalEnchantListWeapon2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceArmor2", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_2)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListArmor2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListArmor2]: invalid config property -> CrystalEnchantChanceListArmor2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListArmor2]: invalid config property -> CrystalEnchantListArmor2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceJewelry2", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_2)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListJewelry2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListJewelry2]: invalid config property -> CrystalEnchantChanceListJewelry2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListJewelry2]: invalid config property -> CrystalEnchantListJewelry2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceWeapon2", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_2)
+		{
+			ENCHANT_CHANCE_LIST_WEAPON_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListWeapon2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListWeapon2]: invalid config property -> EnchantChanceListWeapon2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_WEAPON_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListWeapon2]: invalid config property -> EnchantListWeapon2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceArmor2", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_2)
+		{
+			ENCHANT_CHANCE_LIST_ARMOR_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListArmor2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListArmor2]: invalid config property -> EnchantChanceListArmor2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_ARMOR_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListArmor2]: invalid config property -> EnchantListArmor2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_2 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceJewelry2", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_2)
+		{
+			ENCHANT_CHANCE_LIST_JEWELRY_2 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListJewelry2", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListJewelry2]: invalid config property -> EnchantChanceListJewelry2 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_JEWELRY_2.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListJewelry2]: invalid config property -> EnchantListJewelry2 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon3", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_3)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_WEAPON_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListWeapon3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListWeapon3]: invalid config property -> BlessedEnchantChanceListWeapon3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_WEAPON_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListWeapon3]: invalid config property -> BlessedEnchantListWeapon3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceArmor3", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_3)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_ARMOR_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListArmor3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListArmor3]: invalid config property -> BlessedEnchantChanceListArmor3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_ARMOR_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListArmor3]: invalid config property -> BlessedEnchantListArmor3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceJewelry3", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_3)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListJewelry3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListJewelry3]: invalid config property -> BlessedEnchantChanceListJewelry3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListJewelry3]: invalid config property -> BlessedEnchantListJewelry3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceWeapon3", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_3)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListWeapon3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListWeapon3]: invalid config property -> CrystalEnchantChanceListWeapon3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListWeapon3]: invalid config property -> CrystalEnchantListWeapon3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceArmor3", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_3)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListArmor3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListArmor3]: invalid config property -> CrystalEnchantChanceListArmor3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListArmor3]: invalid config property -> CrystalEnchantListArmor3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceJewelry3", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_3)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListJewelry3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListJewelry3]: invalid config property -> CrystalEnchantChanceListJewelry3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListJewelry3]: invalid config property -> CrystalEnchantListJewelry3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceWeapon3", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_3)
+		{
+			ENCHANT_CHANCE_LIST_WEAPON_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListWeapon3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListWeapon3]: invalid config property -> EnchantChanceListWeapon3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_WEAPON_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListWeapon3]: invalid config property -> EnchantListWeapon3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceArmor3", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_3)
+		{
+			ENCHANT_CHANCE_LIST_ARMOR_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListArmor3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListArmor3]: invalid config property -> EnchantChanceListArmor3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_ARMOR_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListArmor3]: invalid config property -> EnchantListArmor3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_3 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceJewelry3", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_3)
+		{
+			ENCHANT_CHANCE_LIST_JEWELRY_3 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListJewelry3", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListJewelry3]: invalid config property -> EnchantChanceListJewelry3 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_JEWELRY_3.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListJewelry3]: invalid config property -> EnchantListJewelry3 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon4", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_4)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_WEAPON_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListWeapon4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListWeapon4]: invalid config property -> BlessedEnchantChanceListWeapon4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_WEAPON_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListWeapon4]: invalid config property -> BlessedEnchantListWeapon4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceArmor4", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_4)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_ARMOR_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListArmor4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListArmor4]: invalid config property -> BlessedEnchantChanceListArmor4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_ARMOR_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListArmor4]: invalid config property -> BlessedEnchantListArmor4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceJewelry4", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_4)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListJewelry4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListJewelry4]: invalid config property -> BlessedEnchantChanceListJewelry4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListJewelry4]: invalid config property -> BlessedEnchantListJewelry4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceWeapon4", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_4)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListWeapon4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListWeapon4]: invalid config property -> CrystalEnchantChanceListWeapon4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListWeapon4]: invalid config property -> CrystalEnchantListWeapon4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceArmor4", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_4)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListArmor4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListArmor4]: invalid config property -> CrystalEnchantChanceListArmor4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListArmor4]: invalid config property -> CrystalEnchantListArmor4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceJewelry4", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_4)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListJewelry4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListJewelry4]: invalid config property -> CrystalEnchantChanceListJewelry4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListJewelry4]: invalid config property -> CrystalEnchantListJewelry4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceWeapon4", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_4)
+		{
+			ENCHANT_CHANCE_LIST_WEAPON_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListWeapon4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListWeapon4]: invalid config property -> EnchantChanceListWeapon4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_WEAPON_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListWeapon4]: invalid config property -> EnchantListWeapon4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceArmor4", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_4)
+		{
+			ENCHANT_CHANCE_LIST_ARMOR_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListArmor4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListArmor4]: invalid config property -> EnchantChanceListArmor4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_ARMOR_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListArmor4]: invalid config property -> EnchantListArmor4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_4 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceJewelry4", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_4)
+		{
+			ENCHANT_CHANCE_LIST_JEWELRY_4 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListJewelry4", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListJewelry4]: invalid config property -> EnchantChanceListJewelry4 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_JEWELRY_4.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListJewelry4]: invalid config property -> EnchantListJewelry4 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon5", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON_5)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_WEAPON_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListWeapon5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListWeapon5]: invalid config property -> BlessedEnchantChanceListWeapon5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_WEAPON_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListWeapon5]: invalid config property -> BlessedEnchantListWeapon5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceArmor5", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR_5)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_ARMOR_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListArmor5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListArmor5]: invalid config property -> BlessedEnchantChanceListArmor5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_ARMOR_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListArmor5]: invalid config property -> BlessedEnchantListArmor5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceJewelry5", "False"));
+		if (ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_JEWELRY_5)
+		{
+			BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("BlessedEnchantChanceListJewelry5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[BlessedEnchantChanceListJewelry5]: invalid config property -> BlessedEnchantChanceListJewelry5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						BLESSED_ENCHANT_CHANCE_LIST_JEWELRY_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[BlessedEnchantChanceListJewelry5]: invalid config property -> BlessedEnchantListJewelry5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceWeapon5", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_WEAPON_5)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListWeapon5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListWeapon5]: invalid config property -> CrystalEnchantChanceListWeapon5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_WEAPON_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListWeapon5]: invalid config property -> CrystalEnchantListWeapon5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceArmor5", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_ARMOR_5)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListArmor5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListArmor5]: invalid config property -> CrystalEnchantChanceListArmor5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_ARMOR_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListArmor5]: invalid config property -> CrystalEnchantListArmor5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyCrystalEnchantChanceJewelry5", "False"));
+		if (ENABLE_MODIFY_CRYSTAL_ENCHANT_CHANCE_JEWELRY_5)
+		{
+			CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("CrystalEnchantChanceListJewelry5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[CrystalEnchantChanceListJewelry5]: invalid config property -> CrystalEnchantChanceListJewelry5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						CRYSTAL_ENCHANT_CHANCE_LIST_JEWELRY_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[CrystalEnchantChanceListJewelry5]: invalid config property -> CrystalEnchantListJewelry5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		
+		ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceWeapon5", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_WEAPON_5)
+		{
+			ENCHANT_CHANCE_LIST_WEAPON_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListWeapon5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListWeapon5]: invalid config property -> EnchantChanceListWeapon5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_WEAPON_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListWeapon5]: invalid config property -> EnchantListWeapon5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceArmor5", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_ARMOR_5)
+		{
+			ENCHANT_CHANCE_LIST_ARMOR_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListArmor5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListArmor5]: invalid config property -> EnchantChanceListArmor5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_ARMOR_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListArmor5]: invalid config property -> EnchantListArmor5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+		ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_5 = Boolean.parseBoolean(Enchant.getProperty("EnableModifyEnchantChanceJewelry5", "False"));
+		if (ENABLE_MODIFY_ENCHANT_CHANCE_JEWELRY_5)
+		{
+			ENCHANT_CHANCE_LIST_JEWELRY_5 = new HashMap<>();
+			String[] propertySplit;
+			propertySplit = Enchant.getProperty("EnchantChanceListJewelry5", "").split(";");
+			for (String enchant : propertySplit)
+			{
+				String[] enchantSplit = enchant.split(",");
+				if (enchantSplit.length != 2)
+					System.out.println("[EnchantChanceListJewelry5]: invalid config property -> EnchantChanceListJewelry5 \"" + enchant + "\"");
+				else
+				{
+					try
+					{
+						ENCHANT_CHANCE_LIST_JEWELRY_5.put(Integer.parseInt(enchantSplit[0]), Integer.parseInt(enchantSplit[1]));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!enchant.equals(""))
+							System.out.println("[EnchantChanceListJewelry5]: invalid config property -> EnchantListJewelry5 \"" + enchantSplit[0] + "\"" + enchantSplit[1]);
+					}
+				}
+			}
+		}
+	}
 	public static final void loadGameServer()
 	{
 		LOGGER.info("Loading gameserver configuration files.");
@@ -1326,6 +2823,15 @@ public final class Config
 		
 		// server settings
 		loadServer();
+		// NPCs/monsters settings
+		loadNpcs();
+
+		// Server Custom settings
+		CustomServerLoad();
+
+		// Enchant Custom settings
+		CustomEchant();
+
 	}
 	
 	public static final void loadLoginServer()

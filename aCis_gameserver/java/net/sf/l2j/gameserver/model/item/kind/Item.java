@@ -127,6 +127,17 @@ public abstract class Item
 	
 	private final ActionType _defaultAction;
 	
+	private final boolean _is_item_list_1;
+	private final int _enchant_bonus_item_list_1;
+	private final boolean _is_item_list_2;
+	private final int _enchant_bonus_item_list_2;
+	private final boolean _is_item_list_3;
+	private final int _enchant_bonus_item_list_3;
+	private final boolean _is_item_list_4;
+	private final int _enchant_bonus_item_list_4;
+	private final boolean _is_item_list_5;
+	private final int _enchant_bonus_item_list_5;
+	
 	protected List<FuncTemplate> _funcTemplates;
 	
 	protected List<Condition> _preConditions;
@@ -157,6 +168,18 @@ public abstract class Item
 		_isOlyRestricted = set.getBool("is_oly_restricted", false);
 		
 		_defaultAction = set.getEnum("default_action", ActionType.class, ActionType.none);
+
+		_is_item_list_1 = set.getBool("is_item_list_1", false);
+		_enchant_bonus_item_list_1 = set.getInteger("enchant_bonus_item_list_1", 0);
+		_is_item_list_2 = set.getBool("is_item_list_2", false);
+		_enchant_bonus_item_list_2 = set.getInteger("enchant_bonus_item_list_2", 0);
+		_is_item_list_3 = set.getBool("is_item_list_3", false);
+		_enchant_bonus_item_list_3 = set.getInteger("enchant_bonus_item_list_3", 0);
+		_is_item_list_4 = set.getBool("is_item_list_4", false);
+		_enchant_bonus_item_list_4 = set.getInteger("enchant_bonus_item_list_4", 0);
+		_is_item_list_5 = set.getBool("is_item_list_5", false);
+		_enchant_bonus_item_list_5 = set.getInteger("enchant_bonus_item_list_5", 0);
+
 		
 		if (set.containsKey("item_skill"))
 			_skillHolder = set.getIntIntHolderArray("item_skill");
@@ -521,6 +544,55 @@ public abstract class Item
 		return _defaultAction;
 	}
 	
+	public boolean isItemList1()
+	{
+		return _is_item_list_1;
+	}
+	
+	public int enchantBonusItemList1()
+	{
+		return _enchant_bonus_item_list_1;
+	}
+	
+	public boolean isItemList2()
+	{
+		return _is_item_list_2;
+	}
+	
+	public int enchantBonusItemList2()
+	{
+		return _enchant_bonus_item_list_2;
+	}
+	
+	public boolean isItemList3()
+	{
+		return _is_item_list_3;
+	}
+	
+	public int enchantBonusItemList3()
+	{
+		return _enchant_bonus_item_list_3;
+	}
+	
+	public boolean isItemList4()
+	{
+		return _is_item_list_4;
+	}
+	
+	public int enchantBonusItemList4()
+	{
+		return _enchant_bonus_item_list_4;
+	}
+	
+	public boolean isItemList5()
+	{
+		return _is_item_list_5;
+	}
+	
+	public int enchantBonusItemList5()
+	{
+		return _enchant_bonus_item_list_5;
+	}
 	/**
 	 * Returns the name of the item
 	 * @return String
