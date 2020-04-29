@@ -14,8 +14,15 @@ public class PledgeCrest extends L2GameServerPacket
 		_data = CrestCache.getInstance().getCrest(CrestType.PLEDGE, _crestId);
 	}
 	
+	public PledgeCrest(int crestId, byte[] data)
+	{
+		_crestId = crestId;
+		_data = data;
+	}
+	
 	@Override
 	protected final void writeImpl()
+	
 	{
 		writeC(0x6c);
 		writeD(_crestId);

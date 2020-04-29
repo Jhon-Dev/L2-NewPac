@@ -34,8 +34,9 @@ public final class Config
 	public static final String PLAYERS_FILE = "./config/players.properties";
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
-	public static final String SERVER_CUSTOM = "./config/Custom/Mods/Server.properties";
-	public static final String ENCHANT_CUSTOM = "./config/Custom/Mods/Enchant.properties";
+	public static final String SERVER_CUSTOM = "./config/custom/Mods/Server.properties";
+	public static final String CAPTCHA = "./config/custom/protect/Captcha.properties";
+	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.properties";
 
 	
 	// --------------------------------------------------
@@ -114,6 +115,22 @@ public final class Config
 	public static long CH_FRONT_FEE_RATIO;
 	public static int CH_FRONT1_FEE;
 	public static int CH_FRONT2_FEE;
+	
+	// --------------------------------------------------
+	// Customs settings
+	// --------------------------------------------------
+	
+	/** Captcha */
+	public static boolean BOTS_PREVENTION;
+	public static int KILLS_COUNTER;
+	public static int KILLS_COUNTER_RANDOMIZATION;
+	public static int VALIDATION_TIME;
+	public static int PUNISHMENT;
+	public static int PUNISHMENT_TIME;
+	public static boolean L2WALKER_PROTECTION;
+	
+	/** Misc Custom */
+	public static boolean FORCE_INVENTORY_UPDATE;
 	
 	// --------------------------------------------------
 	// Enchant settings
@@ -404,10 +421,7 @@ public final class Config
 	public static boolean SHOW_NPC_LVL;
 	public static boolean SHOW_NPC_CREST;
 	public static boolean SHOW_SUMMON_CREST;
-	
-	/** Misc Custom */
-	public static boolean FORCE_INVENTORY_UPDATE;
-	
+		
 	/** Wyvern Manager */
 	public static boolean WYVERN_ALLOW_UPGRADER;
 	public static int WYVERN_REQUIRED_LEVEL;
@@ -733,7 +747,6 @@ public final class Config
 	public static int THREADS_PER_INSTANT_THREAD_POOL;
 	
 	/** Misc */
-	public static boolean L2WALKER_PROTECTION;
 	public static boolean SERVER_NEWS;
 	public static int ZONE_TOWN;
 	public static boolean DISABLE_TUTORIAL;
@@ -1376,7 +1389,6 @@ public final class Config
 		INSTANT_THREAD_POOL_COUNT = server.getProperty("InstantThreadPoolCount", -1);
 		THREADS_PER_INSTANT_THREAD_POOL = server.getProperty("ThreadsPerInstantThreadPool", 2);
 		
-		L2WALKER_PROTECTION = server.getProperty("L2WalkerProtection", false);
 		ZONE_TOWN = server.getProperty("ZoneTown", 0);
 		SERVER_NEWS = server.getProperty("ShowServerNews", false);
 		DISABLE_TUTORIAL = server.getProperty("DisableTutorial", false);
@@ -1425,7 +1437,20 @@ public final class Config
 		FORCE_INVENTORY_UPDATE =  Boolean.valueOf(CustomServer.getProperty("ForceInventoryUpdate", "False"));
 	}
 	
-	private static final void CustomEchant()
+	private static final void CaptchaLoad()
+	{
+		final ExProperties Captcha = initProperties(CAPTCHA);
+		/** Protection */
+		BOTS_PREVENTION = Captcha.getProperty("EnableBotsPrevention", false);
+		KILLS_COUNTER = Captcha.getProperty("KillsCounter", 60);
+		KILLS_COUNTER_RANDOMIZATION = Captcha.getProperty("KillsCounterRandomization", 50);
+		VALIDATION_TIME = Captcha.getProperty("ValidationTime", 60);
+		PUNISHMENT = Captcha.getProperty("Punishment", 0);
+		PUNISHMENT_TIME = Captcha.getProperty("PunishmentTime", 60);
+		L2WALKER_PROTECTION = Captcha.getProperty("L2WalkerProtection", false);
+	}
+	
+	private static final void EnchantLoad()
 	{
 		final ExProperties Enchant = initProperties(ENCHANT_CUSTOM);
 		ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON = Boolean.parseBoolean(Enchant.getProperty("EnableModifyBlessedEnchantChanceWeapon", "False"));
@@ -2826,11 +2851,10 @@ public final class Config
 		// NPCs/monsters settings
 		loadNpcs();
 
-		// Server Custom settings
+		// Custom settings
 		CustomServerLoad();
-
-		// Enchant Custom settings
-		CustomEchant();
+		EnchantLoad();
+		CaptchaLoad();
 
 	}
 	

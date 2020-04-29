@@ -730,7 +730,7 @@ public final class Player extends Playable
 	{
 		_move = new PlayerMove(this);
 	}
-	
+
 	@Override
 	public void setAttack()
 	{

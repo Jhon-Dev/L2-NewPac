@@ -4,6 +4,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.custom.BotsPrevention;
 import net.sf.l2j.gameserver.communitybbs.CommunityBoard;
 import net.sf.l2j.gameserver.data.manager.HeroManager;
 import net.sf.l2j.gameserver.data.xml.AdminData;
@@ -167,23 +168,27 @@ public final class RequestBypassToServer extends L2GameClientPacket
 				HeroManager.getInstance().showHeroDiary(player, heroclass, heroid, heropage);
 		}
 		else if (_command.startsWith("arenachange")) // change
-		{
+			{
 			final boolean isManager = player.getCurrentFolk() instanceof OlympiadManagerNpc;
-			if (!isManager)
-			{
-				// Without npc, command can be used only in observer mode on arena
-				if (!player.isInObserverMode() || player.isInOlympiadMode() || player.getOlympiadGameId() < 0)
+				if (!isManager)
+				{
+					// Without npc, command can be used only in observer mode on arena
+					if (!player.isInObserverMode() || player.isInOlympiadMode() || player.getOlympiadGameId() < 0)
+						return;
+				}
+				
+				if (OlympiadManager.getInstance().isRegisteredInComp(player))
+				{
+					player.sendPacket(SystemMessageId.WHILE_YOU_ARE_ON_THE_WAITING_LIST_YOU_ARE_NOT_ALLOWED_TO_WATCH_THE_GAME);
 					return;
+				}
+				
+				final int arenaId = Integer.parseInt(_command.substring(12).trim());
+				player.enterOlympiadObserverMode(arenaId);
 			}
-			
-			if (OlympiadManager.getInstance().isRegisteredInComp(player))
+			else if (_command.startsWith("report"))
 			{
-				player.sendPacket(SystemMessageId.WHILE_YOU_ARE_ON_THE_WAITING_LIST_YOU_ARE_NOT_ALLOWED_TO_WATCH_THE_GAME);
-				return;
+				BotsPrevention.getInstance().AnalyseBypass(_command,player);
 			}
-			
-			final int arenaId = Integer.parseInt(_command.substring(12).trim());
-			player.enterOlympiadObserverMode(arenaId);
 		}
 	}
-}

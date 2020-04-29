@@ -10,6 +10,7 @@ import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.commons.random.Rnd;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.custom.BotsPrevention;
 import net.sf.l2j.gameserver.data.xml.MapRegionData;
 import net.sf.l2j.gameserver.data.xml.MapRegionData.TeleportType;
 import net.sf.l2j.gameserver.enums.AiEventType;
@@ -544,6 +545,11 @@ public abstract class Creature extends WorldObject
 		stopAllEffectsExceptThoseThatLastThroughDeath();
 		
 		calculateRewards(killer);
+		
+		if (Config.BOTS_PREVENTION)
+		{
+			BotsPrevention.getInstance().updatecounter(killer, this);
+		}
 		
 		// Send the Server->Client packet StatusUpdate with current HP and MP to all other Player to inform
 		broadcastStatusUpdate();
