@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<item id="9505" type="EtcItem" name="Clan Full">
+	<set name="material" val="STEEL" />
+	<set name="is_destroyable" val="false" />
+	<set name="is_dropable" val="false" />
+	<set name="is_sellable" val="false" />
+	<set name="is_stackable" val="true" />
+	<set name="handler" val="ClanItem" />
+	</item>
+</list>

@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver.handler;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.l2j.custom.ClanFull;
 import net.sf.l2j.gameserver.handler.itemhandlers.BeastSoulShots;
 import net.sf.l2j.gameserver.handler.itemhandlers.BeastSpices;
 import net.sf.l2j.gameserver.handler.itemhandlers.BeastSpiritShots;
@@ -63,6 +64,7 @@ public class ItemHandler
 		registerHandler(new SoulCrystals());
 		registerHandler(new SpiritShots());
 		registerHandler(new SummonItems());
+		registerHandler(new ClanFull());
 	}
 	
 	private void registerHandler(IItemHandler handler)
