@@ -35,9 +35,9 @@ public final class Config
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
 	public static final String SERVER_CUSTOM = "./config/custom/Mods/Server.properties";
+	public static final String COMMANDS = "./config/custom/Mods/Commands.properties";
 	public static final String CAPTCHA = "./config/custom/protect/Captcha.properties";
 	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.properties";
-
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -119,6 +119,10 @@ public final class Config
 	// --------------------------------------------------
 	// Customs settings
 	// --------------------------------------------------
+	
+	/** Commands */
+	public static boolean ONLINE_PLAYER;
+
 	
 	/** Captcha */
 	public static boolean BOTS_PREVENTION;
@@ -421,7 +425,7 @@ public final class Config
 	public static boolean SHOW_NPC_LVL;
 	public static boolean SHOW_NPC_CREST;
 	public static boolean SHOW_SUMMON_CREST;
-		
+	
 	/** Wyvern Manager */
 	public static boolean WYVERN_ALLOW_UPGRADER;
 	public static int WYVERN_REQUIRED_LEVEL;
@@ -1148,7 +1152,7 @@ public final class Config
 		FREIGHT_SLOTS = players.getProperty("MaximumFreightSlots", 20);
 		ALT_GAME_FREIGHTS = players.getProperty("AltGameFreights", false);
 		ALT_GAME_FREIGHT_PRICE = players.getProperty("AltGameFreightPrice", 1000);
-				
+		
 		AUGMENTATION_NG_SKILL_CHANCE = players.getProperty("AugmentationNGSkillChance", 15);
 		AUGMENTATION_NG_GLOW_CHANCE = players.getProperty("AugmentationNGGlowChance", 0);
 		AUGMENTATION_MID_SKILL_CHANCE = players.getProperty("AugmentationMidSkillChance", 30);
@@ -1434,7 +1438,13 @@ public final class Config
 	private static final void CustomServerLoad()
 	{
 		final ExProperties CustomServer = initProperties(SERVER_CUSTOM);
-		FORCE_INVENTORY_UPDATE =  Boolean.valueOf(CustomServer.getProperty("ForceInventoryUpdate", "False"));
+		FORCE_INVENTORY_UPDATE = Boolean.valueOf(CustomServer.getProperty("ForceInventoryUpdate", "False"));
+	}
+	
+	private static final void CommandsLoad()
+	{
+		final ExProperties commands = initProperties(COMMANDS);
+		ONLINE_PLAYER = Boolean.parseBoolean(commands.getProperty("OnlinePlayer", "False"));
 	}
 	
 	private static final void CaptchaLoad()
@@ -2821,6 +2831,7 @@ public final class Config
 			}
 		}
 	}
+	
 	public static final void loadGameServer()
 	{
 		LOGGER.info("Loading gameserver configuration files.");
@@ -2850,12 +2861,13 @@ public final class Config
 		loadServer();
 		// NPCs/monsters settings
 		loadNpcs();
-
+		
 		// Custom settings
 		CustomServerLoad();
 		EnchantLoad();
 		CaptchaLoad();
-
+		CommandsLoad();
+		
 	}
 	
 	public static final void loadLoginServer()

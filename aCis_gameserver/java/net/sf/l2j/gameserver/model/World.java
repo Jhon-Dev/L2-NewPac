@@ -109,6 +109,11 @@ public final class World
 		return _players.values();
 	}
 	
+	public int getAllPlayersCount()
+	{
+		return _players.size();
+	}
+	
 	public Player getPlayer(String name)
 	{
 		return _players.get(PlayerInfoTable.getInstance().getPlayerObjectId(name));
