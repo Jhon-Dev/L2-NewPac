@@ -286,6 +286,7 @@
 	<aCar name="admin_goto" accessLevel="7"/>
 	<aCar name="admin_teleportto" accessLevel="7"/>
 	<aCar name="admin_recall" accessLevel="7"/>
+	<aCar name="admin_recallall" accessLevel="7" />
 	<aCar name="admin_recall_party" accessLevel="7"/>
 	<aCar name="admin_recall_clan" accessLevel="7"/>
 	<aCar name="admin_move_to" accessLevel="7"/>
