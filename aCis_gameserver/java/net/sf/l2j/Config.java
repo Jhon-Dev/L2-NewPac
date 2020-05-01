@@ -122,7 +122,6 @@ public final class Config
 	
 	/** Commands */
 	public static boolean ONLINE_PLAYER;
-
 	
 	/** Captcha */
 	public static boolean BOTS_PREVENTION;
@@ -2859,13 +2858,20 @@ public final class Config
 		
 		// server settings
 		loadServer();
+		
 		// NPCs/monsters settings
 		loadNpcs();
 		
 		// Custom settings
 		CustomServerLoad();
+		
+		// Enchant settings
 		EnchantLoad();
+		
+		// Captcha settings
 		CaptchaLoad();
+		
+		// Commands settings
 		CommandsLoad();
 		
 	}

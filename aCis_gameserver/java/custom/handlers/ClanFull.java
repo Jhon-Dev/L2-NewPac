@@ -1,4 +1,4 @@
-package net.sf.l2j.custom;
+package custom.handlers;
 
 import net.sf.l2j.gameserver.data.SkillTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;

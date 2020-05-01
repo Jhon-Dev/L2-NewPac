@@ -1,4 +1,4 @@
-package net.sf.l2j.custom;
+package custom.protect;
 
 import java.io.File;
 import java.io.RandomAccessFile;

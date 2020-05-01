@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.custom.BotsPrevention;
 import net.sf.l2j.gameserver.communitybbs.CommunityBoard;
 import net.sf.l2j.gameserver.data.manager.HeroManager;
 import net.sf.l2j.gameserver.data.xml.AdminData;
@@ -22,6 +21,8 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.scripting.QuestState;
+
+import custom.protect.BotsPrevention;
 
 public final class RequestBypassToServer extends L2GameClientPacket
 {

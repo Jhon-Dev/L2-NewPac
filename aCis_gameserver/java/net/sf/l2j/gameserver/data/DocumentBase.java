@@ -35,6 +35,7 @@ import net.sf.l2j.gameserver.skills.conditions.ConditionLogicOr;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerActiveEffectId;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerActiveSkillId;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerCharges;
+import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerClassId;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerHasCastle;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerHasClanHall;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerHp;
@@ -392,6 +393,17 @@ abstract class DocumentBase
 			{
 				int lvl = Integer.decode(getValue(a.getNodeValue(), template));
 				cond = joinAnd(cond, new ConditionPlayerLevel(lvl));
+			}
+			else if ("classId".equalsIgnoreCase(a.getNodeName()))
+			{
+				StringTokenizer st = new StringTokenizer(a.getNodeValue(), ",");
+				ArrayList<Integer> array = new ArrayList<>(st.countTokens());
+				while (st.hasMoreTokens())
+				{
+					String item = st.nextToken().trim();
+					array.add(Integer.decode(getValue(item, null)));
+				}
+				cond = joinAnd(cond, new ConditionPlayerClassId(array));
 			}
 			else if ("resting".equalsIgnoreCase(a.getNodeName()))
 			{

@@ -10,7 +10,6 @@ import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.commons.random.Rnd;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.custom.BotsPrevention;
 import net.sf.l2j.gameserver.data.xml.MapRegionData;
 import net.sf.l2j.gameserver.data.xml.MapRegionData.TeleportType;
 import net.sf.l2j.gameserver.enums.AiEventType;
@@ -70,6 +69,8 @@ import net.sf.l2j.gameserver.skills.funcs.FuncPAtkMod;
 import net.sf.l2j.gameserver.skills.funcs.FuncPAtkSpeed;
 import net.sf.l2j.gameserver.skills.funcs.FuncPDefMod;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
+
+import custom.protect.BotsPrevention;
 
 /**
  * An instance type extending {@link WorldObject} which represents the mother class of all character objects of the world such as players, NPCs and monsters.
