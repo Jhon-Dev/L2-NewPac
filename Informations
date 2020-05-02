@@ -8,6 +8,13 @@
 
 #--COMMANDS--#
 .Online
+.Stats
+
+#--HANDLERS--#
+<set name="handler" val="ClanFull" />
+<set name="handler" val="DeletePk" />
+
+
 
 
 #--EVENTS--#

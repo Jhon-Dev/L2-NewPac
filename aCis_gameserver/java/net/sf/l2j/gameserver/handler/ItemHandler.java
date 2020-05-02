@@ -32,6 +32,7 @@ import net.sf.l2j.gameserver.handler.itemhandlers.SummonItems;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 
 import custom.handlers.ClanFull;
+import custom.handlers.DeletePk;
 
 public class ItemHandler
 {
@@ -65,7 +66,12 @@ public class ItemHandler
 		registerHandler(new SoulCrystals());
 		registerHandler(new SpiritShots());
 		registerHandler(new SummonItems());
+		
+		
 		registerHandler(new ClanFull());
+		registerHandler(new DeletePk());
+
+		
 	}
 	
 	private void registerHandler(IItemHandler handler)

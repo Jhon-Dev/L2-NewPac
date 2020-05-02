@@ -225,6 +225,9 @@
 	<!-- RIDE -->
 	<aCar name="admin_ride" accessLevel="7"/>
 	<aCar name="admin_unride" accessLevel="7"/>
+	
+	   <!-- SEARCH -->
+   <aCar name="admin_search" accessLevel="7"/>
 
 	<!-- SHOP -->
 	<aCar name="admin_buy" accessLevel="7"/>

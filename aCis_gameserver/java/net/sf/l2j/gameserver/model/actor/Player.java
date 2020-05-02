@@ -367,6 +367,7 @@ public final class Player extends Playable
 	
 	private boolean _isNoble;
 	private boolean _isHero;
+	private boolean _heropremium = false;
 	
 	private Folk _currentFolk;
 	
@@ -501,6 +502,9 @@ public final class Player extends Playable
 	private L2Skill _summonSkillRequest;
 	
 	private Door _requestedGate;
+	private int _classChangeItemId;
+	private int _nameChangeItemId;
+
 	
 	/**
 	 * Constructor of Player (use Creature constructor).
@@ -730,7 +734,7 @@ public final class Player extends Playable
 	{
 		_move = new PlayerMove(this);
 	}
-
+	
 	@Override
 	public void setAttack()
 	{
@@ -5769,6 +5773,11 @@ public final class Player extends Playable
 		return (wpn == null) ? 0 : Math.min(127, wpn.getEnchantLevel());
 	}
 	
+	public boolean isHeroPremium()
+	{
+		return _heropremium;
+	}
+	
 	/**
 	 * Remember the current {@link Folk} of the {@link Player}, used notably for integrity check.
 	 * @param folk : The Folk to remember.
@@ -8165,4 +8174,25 @@ public final class Player extends Playable
 				break;
 		}
 	}
+	
+	public int getClassChangeItemId()
+	{
+		return this._classChangeItemId;
+	}
+	
+	public void setClassChangeItemId(int itemId)
+	{
+		this._classChangeItemId = itemId;
+	}
+	
+	public int getNameChangeItemId()
+	{
+		return this._nameChangeItemId;
+	}
+	
+	public void setNameChangeItemId(int itemId)
+	{
+		this._nameChangeItemId = itemId;
+	}
+	
 }
