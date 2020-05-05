@@ -51,33 +51,33 @@ import net.sf.l2j.gameserver.skills.L2Skill;
            if (!(playable instanceof Player))
                return;
   
-           Player activeChar = (Player) playable;
+           Player player = (Player) playable;
   
-           if (activeChar.isClanLeader())
+           if (player.isClanLeader())
            {
-               if (activeChar.getClan().getLevel() == 8)
+               if (player.getClan().getLevel() == 8)
                {
-                   activeChar.sendMessage("Your clan is already maximum level!");
+                   player.sendMessage("Your clan is already maximum level!");
                    return;
                }
   
-               activeChar.getClan().changeLevel(level);
-               activeChar.getClan().addReputationScore(reputation);
+               player.getClan().changeLevel(level);
+               player.getClan().addReputationScore(reputation);
   
                for (int s : clanSkills)
                {
                    L2Skill clanSkill = SkillTable.getInstance().getInfo(s, SkillTable.getInstance().getMaxLevel(s));
-                   activeChar.getClan().addNewSkill(clanSkill, forceUse);
+                   player.getClan().addNewSkill(clanSkill, forceUse);
                }
   
-               activeChar.sendSkillList();
-               activeChar.getClan().updateClanInDB();
-               activeChar.sendMessage("Your clan Level/Skills/Reputation has been updated!");
+               player.sendSkillList();
+               player.getClan().updateClanInDB();
+               player.sendMessage("Your clan Level/Skills/Reputation has been updated!");
                playable.destroyItem("Consume", item.getObjectId(), 1, null, false);
-               activeChar.broadcastUserInfo();
+               player.broadcastUserInfo();
            }
            else
-               activeChar.sendMessage("You are not the clan leader.");
+               player.sendMessage("You are not the clan leader.");
   
            return;
        }

@@ -143,12 +143,15 @@ public abstract class Item
 	protected List<Condition> _preConditions;
 	private IntIntHolder[] _skillHolder;
 	
+	private final String _icon;
+	
 	private List<Quest> _questEvents = Collections.emptyList();
 	
 	protected Item(StatsSet set)
 	{
 		_itemId = set.getInteger("item_id");
 		_name = set.getString("name");
+		_icon = set.getString("icon", "icon.noimage");
 		_weight = set.getInteger("weight", 0);
 		_materialType = set.getEnum("material", MaterialType.class, MaterialType.STEEL);
 		_duration = set.getInteger("duration", -1);
@@ -168,7 +171,7 @@ public abstract class Item
 		_isOlyRestricted = set.getBool("is_oly_restricted", false);
 		
 		_defaultAction = set.getEnum("default_action", ActionType.class, ActionType.none);
-
+		
 		_is_item_list_1 = set.getBool("is_item_list_1", false);
 		_enchant_bonus_item_list_1 = set.getInteger("enchant_bonus_item_list_1", 0);
 		_is_item_list_2 = set.getBool("is_item_list_2", false);
@@ -179,7 +182,6 @@ public abstract class Item
 		_enchant_bonus_item_list_4 = set.getInteger("enchant_bonus_item_list_4", 0);
 		_is_item_list_5 = set.getBool("is_item_list_5", false);
 		_enchant_bonus_item_list_5 = set.getInteger("enchant_bonus_item_list_5", 0);
-
 		
 		if (set.containsKey("item_skill"))
 			_skillHolder = set.getIntIntHolderArray("item_skill");
@@ -593,6 +595,7 @@ public abstract class Item
 	{
 		return _enchant_bonus_item_list_5;
 	}
+	
 	/**
 	 * Returns the name of the item
 	 * @return String
@@ -614,5 +617,11 @@ public abstract class Item
 	public List<Quest> getQuestEvents()
 	{
 		return _questEvents;
+	}
+	
+	public String getIcon()
+	{
+		return _icon;
+		
 	}
 }

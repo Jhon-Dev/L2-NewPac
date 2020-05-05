@@ -502,9 +502,7 @@ public final class Player extends Playable
 	private L2Skill _summonSkillRequest;
 	
 	private Door _requestedGate;
-	private int _classChangeItemId;
 	private int _nameChangeItemId;
-
 	
 	/**
 	 * Constructor of Player (use Creature constructor).
@@ -8175,24 +8173,13 @@ public final class Player extends Playable
 		}
 	}
 	
-	public int getClassChangeItemId()
-	{
-		return this._classChangeItemId;
-	}
-	
-	public void setClassChangeItemId(int itemId)
-	{
-		this._classChangeItemId = itemId;
-	}
-	
 	public int getNameChangeItemId()
 	{
-		return this._nameChangeItemId;
+		return _nameChangeItemId;
 	}
 	
 	public void setNameChangeItemId(int itemId)
 	{
-		this._nameChangeItemId = itemId;
+		_nameChangeItemId = itemId;
 	}
-	
 }

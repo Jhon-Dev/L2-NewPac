@@ -38,6 +38,7 @@ public final class Config
 	public static final String COMMANDS = "./config/custom/Mods/Commands.properties";
 	public static final String CAPTCHA = "./config/custom/protect/Captcha.properties";
 	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.properties";
+	public static final String NEWCHAR = "./config/custom/Mods/NewChar.properties";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -131,6 +132,12 @@ public final class Config
 	public static int PUNISHMENT;
 	public static int PUNISHMENT_TIME;
 	public static boolean L2WALKER_PROTECTION;
+	
+	/** New Char */
+	public static boolean STARTING_LOCATION;
+	public static int[] NEW_CHAR_COORDINATES = new int[3];
+	public static byte STARTING_LEVEL;
+	public static String NEW_CHAR_TITLE;
 	
 	/** Misc Custom */
 	public static boolean FORCE_INVENTORY_UPDATE;
@@ -1449,7 +1456,6 @@ public final class Config
 	private static final void CaptchaLoad()
 	{
 		final ExProperties Captcha = initProperties(CAPTCHA);
-		/** Protection */
 		BOTS_PREVENTION = Captcha.getProperty("EnableBotsPrevention", false);
 		KILLS_COUNTER = Captcha.getProperty("KillsCounter", 60);
 		KILLS_COUNTER_RANDOMIZATION = Captcha.getProperty("KillsCounterRandomization", 50);
@@ -1457,6 +1463,23 @@ public final class Config
 		PUNISHMENT = Captcha.getProperty("Punishment", 0);
 		PUNISHMENT_TIME = Captcha.getProperty("PunishmentTime", 60);
 		L2WALKER_PROTECTION = Captcha.getProperty("L2WalkerProtection", false);
+	}
+	
+	private static final void NewCharLoad()
+	{
+		final ExProperties NewChar = initProperties(NEWCHAR);
+		STARTING_LOCATION = NewChar.getProperty("StartingLocation", false);
+		String[] newCharcoords = NewChar.getProperty("NewCharCoordinates", "0,0,0").split(",");
+		if (newCharcoords.length < 3)
+			STARTING_LOCATION = false;
+		else
+		{
+			NEW_CHAR_COORDINATES[0] = Integer.parseInt(newCharcoords[0]);
+			NEW_CHAR_COORDINATES[1] = Integer.parseInt(newCharcoords[1]);
+			NEW_CHAR_COORDINATES[2] = Integer.parseInt(newCharcoords[2]);
+		}
+		STARTING_LEVEL = (byte) NewChar.getProperty("StartingLevel", 0);
+		NEW_CHAR_TITLE = NewChar.getProperty("NewCharTitle", "");
 	}
 	
 	private static final void EnchantLoad()
@@ -2865,14 +2888,17 @@ public final class Config
 		// Custom settings
 		CustomServerLoad();
 		
+		// Commands settings
+		CommandsLoad();
+		
 		// Enchant settings
 		EnchantLoad();
 		
 		// Captcha settings
 		CaptchaLoad();
 		
-		// Commands settings
-		CommandsLoad();
+		// Captcha settings
+		NewCharLoad();
 		
 	}
 	

@@ -33,6 +33,7 @@ import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 
 import custom.handlers.ClanFull;
 import custom.handlers.DeletePk;
+import custom.handlers.ItemNobles;
 
 public class ItemHandler
 {
@@ -70,6 +71,7 @@ public class ItemHandler
 		
 		registerHandler(new ClanFull());
 		registerHandler(new DeletePk());
+		registerHandler(new ItemNobles());
 
 		
 	}

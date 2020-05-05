@@ -33,7 +33,7 @@ public class AccessLevel
 		_accessLevel = set.getInteger("level");
 		_name = set.getString("name");
 		_nameColor = Integer.decode("0x" + set.getString("nameColor", "FFFFFF"));
-		_titleColor = Integer.decode("0x" + set.getString("titleColor", "FFFF77"));
+		_titleColor = Integer.decode("0x" + set.getString("titleColor", "FFFFFF"));
 		_childLevel = set.getInteger("childLevel", 0);
 		_isGm = set.getBool("isGM", false);
 		_allowPeaceAttack = set.getBool("allowPeaceAttack", false);

@@ -6,6 +6,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.data.sql.PlayerInfoTable;
 import net.sf.l2j.gameserver.data.xml.NpcData;
 import net.sf.l2j.gameserver.data.xml.PlayerData;
+import net.sf.l2j.gameserver.data.xml.PlayerLevelData;
 import net.sf.l2j.gameserver.data.xml.ScriptData;
 import net.sf.l2j.gameserver.enums.ShortcutType;
 import net.sf.l2j.gameserver.enums.actors.Sex;
@@ -142,8 +143,31 @@ public final class RequestCharacterCreate extends L2GameClientPacket
 		
 		World.getInstance().addObject(player);
 		
-		player.getPosition().set(template.getRandomSpawn());
-		player.setTitle("");
+		if (Config.STARTING_LOCATION)
+			player.setXYZInvisible(Config.NEW_CHAR_COORDINATES[0], Config.NEW_CHAR_COORDINATES[1], Config.NEW_CHAR_COORDINATES[2]);
+		else
+			player.setXYZInvisible(template.getRandomSpawn());
+			
+		
+		
+
+		
+		//if (Config.STARTING_LEVEL != 0)
+		//	player.getStat().addExp(Experience.LEVEL[Config.STARTING_LEVEL]);
+		
+		
+		if (Config.STARTING_LEVEL != 0)
+			player.getStat().getExpForLevel(Config.STARTING_LEVEL);
+		
+		
+
+		
+		
+		
+		if (!Config.NEW_CHAR_TITLE.isEmpty())
+			player.setTitle(Config.NEW_CHAR_TITLE);
+		else
+			player.setTitle("");
 		
 		// Register shortcuts.
 		player.getShortcutList().addShortcut(new Shortcut(0, 0, ShortcutType.ACTION, 2, -1, 1)); // attack shortcut

@@ -28,30 +28,31 @@ import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class Stats implements IVoicedCommandHandler
 {
+	
 	private static final String[] VOICED_COMMANDS =
 	{
 		"stats"
 	};
 	
 	@Override
-	public boolean useVoicedCommand(String command, Player activeChar, String target)
+	public boolean useVoicedCommand(String command, Player player, String target)
 	{
 		if (command.equalsIgnoreCase("stats"))
 		{
-			if (activeChar.getTarget() == null)
+			if (player.getTarget() == null)
 			{
-				activeChar.sendMessage("You have no one targeted.");
+				player.sendMessage("You have no one targeted.");
 				return false;
 			}
-			if (!(activeChar.getTarget() instanceof Player))
+			if (!(player.getTarget() instanceof Player))
 			{
-				activeChar.sendMessage("You can only get the info of a player.");
+				player.sendMessage("You can only get the info of a player.");
 				
 				return false;
 			}
 			
 			NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
-			Player targetp = (Player) activeChar.getTarget();
+			Player targetp = (Player) player.getTarget();
 			
 			StringBuilder replyMSG = new StringBuilder("<html><title>L2JnCenter Info Player</title><body><center>");
 			
@@ -172,7 +173,7 @@ public class Stats implements IVoicedCommandHandler
 			replyMSG.append("</center></body></html>");
 			
 			adminReply.setHtml(replyMSG.toString());
-			activeChar.sendPacket(adminReply);
+			player.sendPacket(adminReply);
 			
 			adminReply = null;
 			targetp = null;

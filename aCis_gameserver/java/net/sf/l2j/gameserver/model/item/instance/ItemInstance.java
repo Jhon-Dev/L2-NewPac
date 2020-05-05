@@ -17,6 +17,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.data.manager.CastleManager;
 import net.sf.l2j.gameserver.data.xml.ItemData;
 import net.sf.l2j.gameserver.enums.IntentionType;
+import net.sf.l2j.gameserver.enums.items.CrystalType;
 import net.sf.l2j.gameserver.enums.items.EtcItemType;
 import net.sf.l2j.gameserver.enums.items.ItemType;
 import net.sf.l2j.gameserver.enums.items.ShotType;
@@ -463,6 +464,15 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 	public final int getCrystalCount()
 	{
 		return _item.getCrystalCount(_enchantLevel);
+	}
+	
+	/**
+	 * Returns the reference grade of the item.
+	 * @return int
+	 */
+	public final CrystalType getItemGrade()
+	{
+		return _item.getCrystalType();
 	}
 	
 	/**
@@ -1211,7 +1221,7 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 	{
 		return getItem().isItemList1();
 	}
- 	
+	
 	public int enchantBonusItemList1()
 	{
 		return getItem().enchantBonusItemList1();
@@ -1256,6 +1266,7 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 	{
 		return getItem().enchantBonusItemList5();
 	}
+	
 	@Override
 	public void decayMe()
 	{
