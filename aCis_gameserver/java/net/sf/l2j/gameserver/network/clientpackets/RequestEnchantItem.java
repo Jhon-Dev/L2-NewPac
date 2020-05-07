@@ -257,7 +257,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket
 						player.sendPacket(sm);
 					}
 					
-					if (!Config.FORCE_INVENTORY_UPDATE)
+					if (!Config.FORCE_INVENTORY)
 					{
 						InventoryUpdate iu = new InventoryUpdate();
 						if (destroyItem.getCount() == 0)

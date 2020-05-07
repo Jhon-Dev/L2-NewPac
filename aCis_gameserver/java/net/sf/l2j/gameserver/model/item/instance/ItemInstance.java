@@ -521,7 +521,7 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 	 */
 	public boolean isDropable()
 	{
-		return isAugmented() ? false : _item.isDropable();
+		return isAugmented() ? Config.AUG_ITEM_DROP : _item.isDropable();
 	}
 	
 	/**
@@ -537,7 +537,7 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 	 */
 	public boolean isTradable()
 	{
-		return isAugmented() ? false : _item.isTradable();
+		return isAugmented() ? Config.AUG_ITEM_TRADE : _item.isTradable();
 	}
 	
 	/**
@@ -545,7 +545,7 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 	 */
 	public boolean isSellable()
 	{
-		return isAugmented() ? false : _item.isSellable();
+		return isAugmented() ? Config.AUG_ITEM_SELL : _item.isSellable();
 	}
 	
 	/**

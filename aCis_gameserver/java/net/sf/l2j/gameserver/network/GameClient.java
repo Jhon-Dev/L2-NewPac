@@ -29,6 +29,8 @@ import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 import net.sf.l2j.gameserver.network.serverpackets.ServerClose;
 
+import custom.data.sql.OfflineTraders;
+
 /**
  * Represents a client connected on Game Server.<br>
  * <br>
@@ -209,6 +211,12 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 				{
 					setDetached(true);
 					fast = !getPlayer().isInCombat() && !getPlayer().isLocked();
+					
+					if (OfflineTraders.getInstance().offlineMode(getPlayer()))
+					{
+						getPlayer().setOfflineMode(true);
+						return;
+					}
 				}
 				cleanMe(fast);
 			});

@@ -103,6 +103,8 @@ import net.sf.l2j.gameserver.taskmanager.WaterTaskManager;
 import net.sf.l2j.util.DeadLockDetector;
 import net.sf.l2j.util.IPv4Filter;
 
+import custom.data.sql.OfflineTraders;
+
 public class GameServer
 {
 	private static final CLogger LOGGER = new CLogger(GameServer.class.getName());
@@ -133,8 +135,8 @@ public class GameServer
 			LogManager.getLogManager().readConfiguration(is);
 		}
 		
-	    Jhondev.infoGS();
-	    StringUtil.printSection("aCis");
+		Jhondev.infoGS();
+		StringUtil.printSection("aCis");
 		
 		// Initialize config
 		Config.loadGameServer();
@@ -185,6 +187,9 @@ public class GameServer
 		HtmCache.getInstance();
 		PartyMatchRoomManager.getInstance();
 		RaidPointManager.getInstance();
+		
+		if ((Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) && Config.RESTORE_OFFLINERS)
+			OfflineTraders.getInstance();
 		
 		StringUtil.printSection("Community server");
 		if (Config.ENABLE_COMMUNITY_BOARD) // Forums has to be loaded before clan data

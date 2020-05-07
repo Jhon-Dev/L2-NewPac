@@ -30,6 +30,11 @@ public class ManufactureList
 		_list.addAll(Arrays.asList(items));
 	}
 	
+	public void add(ManufactureItem item)
+	{
+		_list.add(item);
+	}
+	
 	public boolean hasConfirmed()
 	{
 		return _confirmed;

@@ -282,6 +282,7 @@ public final class Player extends Playable
 	private long _onlineBeginTime;
 	private long _lastAccess;
 	private long _uptime;
+	private long _lastAction;
 	
 	protected int _baseClass;
 	protected int _activeClass;
@@ -338,6 +339,8 @@ public final class Player extends Playable
 	private boolean _isCrystallizing;
 	private boolean _isCrafting;
 	
+	private long _offlineShopStart = 0;
+	
 	private boolean _isSitting;
 	private boolean _isStanding;
 	private boolean _isSittingNow;
@@ -355,6 +358,7 @@ public final class Player extends Playable
 	private final List<PcFreight> _depositedFreight = new ArrayList<>();
 	
 	private OperateType _operateType = OperateType.NONE;
+	private boolean isOfflineShop;
 	
 	private TradeList _activeTradeList;
 	private ItemContainer _activeWarehouse;
@@ -2454,6 +2458,11 @@ public final class Player extends Playable
 		return _accountName;
 	}
 	
+	public String getAccountNamePlayer()
+	{
+		return _accountName;
+	}
+	
 	public Map<Integer, String> getAccountChars()
 	{
 		return _chars;
@@ -2499,7 +2508,7 @@ public final class Player extends Playable
 		// GMs lack the normal shift + action behaviour of regular players
 		if (player.isGM() && isShiftPressed)
 		{
-			AdminEditChar.gatherCharacterInfo(player, this);
+			AdminEditChar.showCharacterInfo(player, this);
 			return;
 		}
 		
@@ -3700,6 +3709,48 @@ public final class Player extends Playable
 		_operateType = type;
 	}
 	
+	public boolean isOfflineMode()
+	{
+		return isOfflineShop;	
+	}
+	
+	public void setOfflineMode(boolean off)
+	{
+		isOfflineShop = off;
+		
+		if (getClan() != null)
+			getClan().broadcastToOtherOnlineMembers(new PledgeShowMemberListUpdate(this), this);
+		
+		if (getParty() != null)
+			getParty().removePartyMember(this, MessageType.DISCONNECTED);
+		
+		OlympiadManager.getInstance().unRegisterNoble(this);
+		
+		if (getSummon() != null)
+		{
+			getSummon().doRevive();
+			getSummon().unSummon(this);
+		}
+		
+		getActingPlayer().getAppearance().setNameColor(Config.OFFLINE_NAME_COLOR);
+		getActingPlayer().updateAndBroadcastStatus(2);
+		
+		if (getOfflineStartTime() == 0)
+			setOfflineStartTime(System.currentTimeMillis());
+		
+		broadcastUserInfo();
+	}
+	
+	public long getOfflineStartTime()
+	{
+		return _offlineShopStart;
+	}
+	
+	public void setOfflineStartTime(long time)
+	{
+		_offlineShopStart = time;
+	}
+
 	/**
 	 * @return true if this {@link Player} is set on any store mode (which means he is sitting with a panel above his head).
 	 */
@@ -4406,6 +4457,10 @@ public final class Player extends Playable
 		return System.currentTimeMillis() - _uptime;
 	}
 	
+	public boolean isAFK()
+	{
+		return _lastAction < System.currentTimeMillis();
+	}
 	/**
 	 * Return True if the Player is invulnerable.
 	 */

@@ -885,6 +885,34 @@ public abstract class Creature extends WorldObject
 		return _isRunning;
 	}
 	
+	public final void setIsRunning(boolean value)
+	{
+		_isRunning = value;
+		if (getMoveSpeed() != 0)
+			broadcastPacket(new ChangeMoveType(this));
+		
+		if (this instanceof Player)
+			((Player) this).broadcastUserInfo();
+		else if (this instanceof Summon)
+			((Summon) this).broadcastStatusUpdate();
+		else if (this instanceof Npc)
+		{
+			for (Player player : getKnownType(Player.class))
+			{
+				if (getMoveSpeed() == 0)
+					player.sendPacket(new ServerObjectInfo((Npc) this, player));
+				else
+					player.sendPacket(new NpcInfo((Npc) this, player));
+			}
+		}
+	}
+	
+	/** Set the Creature movement type to run and send Server->Client packet ChangeMoveType to all others Player. */
+	public final void setRunning()
+	{
+		if (!isRunning())
+			setIsRunning(true);
+	}
 	/**
 	 * Make this {@link Creature} walk/run and send related packets to all {@link Player}s.
 	 * @param value : If false, the {@link Creature} will walk. If true, it will run.

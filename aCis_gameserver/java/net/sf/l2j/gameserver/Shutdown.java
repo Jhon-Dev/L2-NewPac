@@ -28,6 +28,8 @@ import net.sf.l2j.gameserver.network.serverpackets.ServerClose;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
 
+import custom.data.sql.OfflineTraders;
+
 /**
  * This class provides functions for shutting down and restarting the server. It closes all client connections and saves data.
  */
@@ -138,6 +140,10 @@ public class Shutdown extends Thread
 			// Schemes save.
 			BufferManager.getInstance().saveSchemes();
 			LOGGER.info("BufferTable data has been saved.");
+			
+			// Save Offline players
+			if ((Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) && Config.RESTORE_OFFLINERS)
+			OfflineTraders.getInstance().storeOffliners();
 			
 			// Couples save.
 			if (Config.ALLOW_WEDDING)

@@ -34,11 +34,18 @@ public final class Config
 	public static final String PLAYERS_FILE = "./config/players.properties";
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
+	// --------------------------------------------------
+	// Customs Folders
+	// -------------------------------------------------
 	public static final String SERVER_CUSTOM = "./config/custom/Mods/Server.properties";
 	public static final String COMMANDS = "./config/custom/Mods/Commands.properties";
 	public static final String CAPTCHA = "./config/custom/protect/Captcha.properties";
 	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.properties";
 	public static final String NEWCHAR = "./config/custom/Mods/NewChar.properties";
+	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.properties";
+	
+	
+	
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -121,6 +128,12 @@ public final class Config
 	// Customs settings
 	// --------------------------------------------------
 	
+	/** Server Custom */
+	public static boolean FORCE_INVENTORY;
+	public static boolean AUG_ITEM_TRADE;
+	public static boolean AUG_ITEM_DROP;
+	public static boolean AUG_ITEM_SELL;
+	
 	/** Commands */
 	public static boolean ONLINE_PLAYER;
 	
@@ -139,13 +152,18 @@ public final class Config
 	public static byte STARTING_LEVEL;
 	public static String NEW_CHAR_TITLE;
 	
-	/** Misc Custom */
-	public static boolean FORCE_INVENTORY_UPDATE;
+	/** Offline Trade */
+	public static boolean OFFLINE_TRADE_ENABLE;
+	public static boolean OFFLINE_CRAFT_ENABLE;
+	public static boolean OFFLINE_MODE_IN_PEACE_ZONE;
+	public static boolean OFFLINE_MODE_NO_DAMAGE;
+	public static boolean RESTORE_OFFLINERS;
+	public static boolean OFFLINE_DISCONNECT_FINISHED;
+	public static int OFFLINE_MAX_DAYS;
+	public static boolean OFFLINE_SET_NAME_COLOR;
+	public static int OFFLINE_NAME_COLOR;
 	
-	// --------------------------------------------------
-	// Enchant settings
-	// --------------------------------------------------
-	
+	/** Enchant Custom */
 	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON;
 	public static Map<Integer, Integer> BLESSED_ENCHANT_CHANCE_LIST_WEAPON;
 	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_ARMOR;
@@ -1444,7 +1462,10 @@ public final class Config
 	private static final void CustomServerLoad()
 	{
 		final ExProperties CustomServer = initProperties(SERVER_CUSTOM);
-		FORCE_INVENTORY_UPDATE = Boolean.valueOf(CustomServer.getProperty("ForceInventoryUpdate", "False"));
+		FORCE_INVENTORY = CustomServer.getProperty("ForceInventory", false);
+		AUG_ITEM_TRADE = CustomServer.getProperty("AugItemTrade", false);
+		AUG_ITEM_DROP = CustomServer.getProperty("AugItemDrop", false);
+		AUG_ITEM_SELL = CustomServer.getProperty("AugItemSell", false);
 	}
 	
 	private static final void CommandsLoad()
@@ -1480,6 +1501,21 @@ public final class Config
 		}
 		STARTING_LEVEL = (byte) NewChar.getProperty("StartingLevel", 0);
 		NEW_CHAR_TITLE = NewChar.getProperty("NewCharTitle", "");
+	}
+	
+	private static final void OfflineLoad()
+	{
+		final ExProperties OfflineTrade = initProperties(OFF_TRADE);
+		OFFLINE_TRADE_ENABLE = OfflineTrade.getProperty("OfflineTradeEnable", false);
+		OFFLINE_CRAFT_ENABLE = OfflineTrade.getProperty("OfflineCraftEnable", false);
+		OFFLINE_MODE_IN_PEACE_ZONE = OfflineTrade.getProperty("OfflineModeInPeaceZone", false);
+		OFFLINE_MODE_NO_DAMAGE = OfflineTrade.getProperty("OfflineModeNoDamage", false);
+		OFFLINE_SET_NAME_COLOR = OfflineTrade.getProperty("OfflineSetNameColor", false);
+		OFFLINE_NAME_COLOR = Integer.decode("0x" + OfflineTrade.getProperty("OfflineNameColor", "808080"));
+		RESTORE_OFFLINERS = OfflineTrade.getProperty("RestoreOffliners", false);
+		OFFLINE_MAX_DAYS = OfflineTrade.getProperty("OfflineMaxDays", 10);
+		OFFLINE_DISCONNECT_FINISHED = OfflineTrade.getProperty("OfflineDisconnectFinished", true);
+		
 	}
 	
 	private static final void EnchantLoad()
@@ -2897,8 +2933,11 @@ public final class Config
 		// Captcha settings
 		CaptchaLoad();
 		
-		// Captcha settings
+		// NewChar settings
 		NewCharLoad();
+		
+		// OffTrade settings
+		OfflineLoad();
 		
 	}
 	

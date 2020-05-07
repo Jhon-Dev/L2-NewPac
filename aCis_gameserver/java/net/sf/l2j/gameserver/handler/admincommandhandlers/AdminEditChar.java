@@ -87,11 +87,11 @@ public class AdminEditChar implements IAdminCommandHandler
 						target = activeChar;
 				}
 				
-				gatherCharacterInfo(activeChar, target);
+				showCharacterInfo(activeChar, target);
 			}
 			catch (Exception e)
 			{
-				gatherCharacterInfo(activeChar, activeChar);
+				showCharacterInfo(activeChar, activeChar);
 			}
 		}
 		else if (command.startsWith("admin_show_characters"))
@@ -815,12 +815,42 @@ public class AdminEditChar implements IAdminCommandHandler
 		activeChar.sendPacket(html);
 	}
 	
+	public static void showCharacterInfo(Player activeChar, Player player)
+	{
+		if (player == null)
+		{
+			WorldObject target = activeChar.getTarget();
+			if (!(target instanceof Player))
+				return;
+			
+			player = (Player) target;
+		}
+		else
+			activeChar.setTarget(player);
+
+		final GameClient client = activeChar.getClient();
+		if (client == null)
+		{
+			activeChar.sendMessage("Client is null.");
+			return;
+		}
+		
+		if (client.isDetached())
+		{
+			activeChar.sendMessage("Client is detached.");
+			return;
+		}
+		
+		gatherCharacterInfo(activeChar, player, "charinfo.htm");
+	}
+
 	/**
 	 * Gather character informations.
 	 * @param activeChar The player who requested that action.
 	 * @param player The target to gather informations from.
+	 * @param string 
 	 */
-	public static void gatherCharacterInfo(Player activeChar, Player player)
+	public static void gatherCharacterInfo(Player activeChar, Player player, String string)
 	{
 		activeChar.setTarget(player);
 		
