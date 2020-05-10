@@ -362,6 +362,7 @@ public final class Player extends Playable
 	
 	private TradeList _activeTradeList;
 	private ItemContainer _activeWarehouse;
+	private ManufactureList _createList;
 	
 	private final TradeList _buyList = new TradeList(this);
 	private final TradeList _sellList = new TradeList(this);
@@ -3666,6 +3667,23 @@ public final class Player extends Playable
 			partner.onTradeCancel(this);
 		
 		onTradeCancel(this);
+	}
+	
+	/**
+	 * @return The _createList object of the Player.
+	 */
+	public ManufactureList getCreateList()
+	{
+		return _createList;
+	}
+	
+	/**
+	 * Set the _createList object of the Player.
+	 * @param list
+	 */
+	public void setCreateList(ManufactureList list)
+	{
+		_createList = list;
 	}
 	
 	/**

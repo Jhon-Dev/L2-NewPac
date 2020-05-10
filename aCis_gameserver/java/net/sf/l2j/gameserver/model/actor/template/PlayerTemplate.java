@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver.model.actor.template;
 import java.util.List;
 
 import net.sf.l2j.commons.random.Rnd;
+import net.sf.l2j.commons.util.ArraysUtil;
 import net.sf.l2j.commons.util.StatsSet;
 
 import net.sf.l2j.gameserver.data.xml.ItemData;
@@ -40,6 +41,9 @@ public class PlayerTemplate extends CreatureTemplate
 	private final double[] _mpTable;
 	private final double[] _cpTable;
 	
+	private final int[] _buffs;
+	private final boolean _isbuffs;
+	
 	private final List<ItemTemplateHolder> _items;
 	private final List<GeneralSkillNode> _skills;
 	
@@ -65,6 +69,9 @@ public class PlayerTemplate extends CreatureTemplate
 		_hpTable = set.getDoubleArray("hpTable");
 		_mpTable = set.getDoubleArray("mpTable");
 		_cpTable = set.getDoubleArray("cpTable");
+		
+		_isbuffs = set.getBool("isbuffs", false);
+		_buffs = set.getIntegerArray("buffs", ArraysUtil.EMPTY_INT_ARRAY);
 		
 		_items = set.getList("items");
 		_skills = set.getList("skills");
@@ -141,6 +148,16 @@ public class PlayerTemplate extends CreatureTemplate
 	public final double getBaseCpMax(int level)
 	{
 		return _cpTable[level - 1];
+	}
+	
+	public final int[] getBuffIds()
+	{
+		return _buffs;
+	}
+	
+	public final boolean isBuffIds()
+	{
+		return _isbuffs;
 	}
 	
 	/**

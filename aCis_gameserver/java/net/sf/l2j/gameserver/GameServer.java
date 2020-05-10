@@ -103,7 +103,7 @@ import net.sf.l2j.gameserver.taskmanager.WaterTaskManager;
 import net.sf.l2j.util.DeadLockDetector;
 import net.sf.l2j.util.IPv4Filter;
 
-import custom.data.sql.OfflineTraders;
+import custom.data.sql.OfflineTradersData;
 
 public class GameServer
 {
@@ -189,7 +189,7 @@ public class GameServer
 		RaidPointManager.getInstance();
 		
 		if ((Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) && Config.RESTORE_OFFLINERS)
-			OfflineTraders.getInstance();
+			OfflineTradersData.getInstance();
 		
 		StringUtil.printSection("Community server");
 		if (Config.ENABLE_COMMUNITY_BOARD) // Forums has to be loaded before clan data

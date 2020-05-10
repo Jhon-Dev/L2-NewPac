@@ -43,9 +43,8 @@ public final class Config
 	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.properties";
 	public static final String NEWCHAR = "./config/custom/Mods/NewChar.properties";
 	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.properties";
-	
-	
-	
+	public static final String BUFF = "./config/custom/Mods/Buff.properties";
+	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.properties";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -152,6 +151,14 @@ public final class Config
 	public static byte STARTING_LEVEL;
 	public static String NEW_CHAR_TITLE;
 	
+	/** Startup Buffs */
+	public static int MAX_BUFFS_AMOUNT;
+	public static int BUFFER_MAX_SCHEMES;
+	public static boolean STORE_SKILL_COOLTIME;
+	public static int BUFFER_STATIC_BUFF_COST;
+	public static List<Integer> FIGHTER_SKILL_LIST;
+	public static List<Integer> MAGE_SKILL_LIST;
+	
 	/** Offline Trade */
 	public static boolean OFFLINE_TRADE_ENABLE;
 	public static boolean OFFLINE_CRAFT_ENABLE;
@@ -162,6 +169,11 @@ public final class Config
 	public static int OFFLINE_MAX_DAYS;
 	public static boolean OFFLINE_SET_NAME_COLOR;
 	public static int OFFLINE_NAME_COLOR;
+	
+	/** Party Drop Config */
+	public static String NPC_LIST;
+	public static int[] NPC_LIST_SET;
+	public static Map<Integer, Integer> PARTY_DROP_REWARDS = new HashMap<>();
 	
 	/** Enchant Custom */
 	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON;
@@ -436,10 +448,6 @@ public final class Config
 	public static int CHAMPION_REWARD_ID;
 	public static int CHAMPION_REWARD_QTY;
 	
-	/** Buffer */
-	public static int BUFFER_MAX_SCHEMES;
-	public static int BUFFER_STATIC_BUFF_COST;
-	
 	/** Misc */
 	public static boolean ALLOW_CLASS_MASTERS;
 	public static ClassMasterSettings CLASS_MASTER_SETTINGS;
@@ -616,10 +624,6 @@ public final class Config
 	public static boolean ES_SP_BOOK_NEEDED;
 	public static boolean DIVINE_SP_BOOK_NEEDED;
 	public static boolean SUBCLASS_WITHOUT_QUESTS;
-	
-	/** Buffs */
-	public static boolean STORE_SKILL_COOLTIME;
-	public static int MAX_BUFFS_AMOUNT;
 	
 	// --------------------------------------------------
 	// Sieges
@@ -1079,9 +1083,6 @@ public final class Config
 		CHAMPION_REWARD_ID = npcs.getProperty("ChampionRewardItemID", 6393);
 		CHAMPION_REWARD_QTY = npcs.getProperty("ChampionRewardItemQty", 1);
 		
-		BUFFER_MAX_SCHEMES = npcs.getProperty("BufferMaxSchemesPerChar", 4);
-		BUFFER_STATIC_BUFF_COST = npcs.getProperty("BufferStaticCostPerBuff", -1);
-		
 		ALLOW_CLASS_MASTERS = npcs.getProperty("AllowClassMasters", false);
 		ALLOW_ENTIRE_TREE = npcs.getProperty("AllowEntireTree", false);
 		if (ALLOW_CLASS_MASTERS)
@@ -1257,8 +1258,6 @@ public final class Config
 		DIVINE_SP_BOOK_NEEDED = players.getProperty("DivineInspirationSpBookNeeded", true);
 		SUBCLASS_WITHOUT_QUESTS = players.getProperty("SubClassWithoutQuests", false);
 		
-		MAX_BUFFS_AMOUNT = players.getProperty("MaxBuffsAmount", 20);
-		STORE_SKILL_COOLTIME = players.getProperty("StoreSkillCooltime", true);
 	}
 	
 	/**
@@ -1503,6 +1502,22 @@ public final class Config
 		NEW_CHAR_TITLE = NewChar.getProperty("NewCharTitle", "");
 	}
 	
+	private static final void BuffLoad()
+	{
+		final ExProperties buff = initProperties(BUFF);
+		MAX_BUFFS_AMOUNT = buff.getProperty("MaxBuffsAmount", 20);
+		BUFFER_MAX_SCHEMES = buff.getProperty("BufferMaxSchemesPerChar", 4);
+		STORE_SKILL_COOLTIME = buff.getProperty("StoreSkillCooltime", true);
+		BUFFER_STATIC_BUFF_COST = buff.getProperty("BufferStaticCostPerBuff", -1);
+		FIGHTER_SKILL_LIST = new ArrayList<>();
+		for (String skill_id : buff.getProperty("FighterSkillList", "").split(";"))
+			FIGHTER_SKILL_LIST.add(Integer.parseInt(skill_id));
+		
+		MAGE_SKILL_LIST = new ArrayList<>();
+		for (String skill_id : buff.getProperty("MageSkillList", "").split(";"))
+			MAGE_SKILL_LIST.add(Integer.parseInt(skill_id));
+	}
+	
 	private static final void OfflineLoad()
 	{
 		final ExProperties OfflineTrade = initProperties(OFF_TRADE);
@@ -1518,6 +1533,24 @@ public final class Config
 		
 	}
 	
+	private static final void DropPartyLoad()
+	{
+		final ExProperties DropParty = initProperties(DROP_PARTY);
+	    NPC_LIST = DropParty.getProperty("NpcListPartyDrop", "10506,10507");
+	    
+	    String[] NpcList = NPC_LIST.split(",");
+	    NPC_LIST_SET = new int[NpcList.length];
+	    for (int i = 0; i < NpcList.length; i++)
+	        NPC_LIST_SET[i] = Integer.parseInt(NpcList[i]);
+	   
+	    String PARTY_DROP_REWARD_VALUE = DropParty.getProperty("PartyDropReward", "57,100000000;");
+	    String[] party_drop_reward_splitted_1 = PARTY_DROP_REWARD_VALUE.split(";");
+	    for (String i : party_drop_reward_splitted_1)
+	    {
+	        String[] party_drop_reward_splitted_2 = i.split(",");
+	        PARTY_DROP_REWARDS.put(Integer.parseInt(party_drop_reward_splitted_2[1]), Integer.parseInt(party_drop_reward_splitted_2[0]));
+	    }
+	}
 	private static final void EnchantLoad()
 	{
 		final ExProperties Enchant = initProperties(ENCHANT_CUSTOM);
@@ -2936,8 +2969,14 @@ public final class Config
 		// NewChar settings
 		NewCharLoad();
 		
+		// Buff settings
+		BuffLoad();
+		
 		// OffTrade settings
 		OfflineLoad();
+		
+		// DropParty settings
+		DropPartyLoad();
 		
 	}
 	

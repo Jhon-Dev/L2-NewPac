@@ -11,15 +11,18 @@ import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.data.SkillTable;
 import net.sf.l2j.gameserver.data.manager.BufferManager;
+import net.sf.l2j.gameserver.data.xml.PlayerData;
 import net.sf.l2j.gameserver.model.actor.Creature;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.Summon;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.skills.L2Skill;
 
 public class SchemeBuffer extends Folk
 {
-	private static final int PAGE_LIMIT = 6;
+	private static final int PAGE_LIMIT = 10;
 	
 	public SchemeBuffer(int objectId, NpcTemplate template)
 	{
@@ -37,6 +40,48 @@ public class SchemeBuffer extends Folk
 			final NpcHtmlMessage html = new NpcHtmlMessage(0);
 			html.setFile(getHtmlPath(getNpcId(), 0));
 			html.replace("%objectId%", getObjectId());
+			player.sendPacket(html);
+		}
+		if (currentCommand.equalsIgnoreCase("bufflist"))
+		{
+			SchemeBuffer.autoBuffFunction(player, st.nextToken());
+		}
+		else if (currentCommand.equalsIgnoreCase("openlist"))
+		{
+			String category = st.nextToken();
+			String htmfile = st.nextToken();
+			NpcHtmlMessage html = new NpcHtmlMessage(this.getObjectId());
+			if (category.equalsIgnoreCase("null"))
+			{
+				html.setFile("data/html/mods/buffer/" + htmfile + ".htm");
+				if (htmfile.equals("index"))
+				{
+					html.replace("%name%", player.getName());
+					html.replace("%buffcount%", "You have " + player.getBuffCount() + "/" + player.getMaxBuffCount() + " buffs.");
+				}
+			}
+			else
+			{
+				html.setFile("data/html/mods/buffer/" + category + "/" + htmfile + ".htm");
+			}
+			html.replace("%objectId%", String.valueOf(this.getObjectId()));
+			player.sendPacket(html);
+		}
+		else if (currentCommand.equalsIgnoreCase("dobuff"))
+		{
+			int buffid = Integer.valueOf(st.nextToken());
+			int bufflevel = Integer.valueOf(st.nextToken());
+			String category = st.nextToken();
+			String windowhtml = st.nextToken();
+			Player target = player;
+			MagicSkillUse mgc = new MagicSkillUse(this, target, buffid, bufflevel, 1150, 0);
+			player.sendPacket(mgc);
+			player.broadcastPacket(mgc);
+			SkillTable.getInstance().getInfo(buffid, bufflevel).getEffects(this, target);
+			NpcHtmlMessage html = new NpcHtmlMessage(this.getObjectId());
+			html.setFile("data/html/mods/buffer/" + category + "/" + windowhtml + ".htm");
+			html.replace("%objectId%", String.valueOf(this.getObjectId()));
+			html.replace("%name%", player.getName());
 			player.sendPacket(html);
 		}
 		else if (currentCommand.startsWith("cleanup"))
@@ -67,9 +112,7 @@ public class SchemeBuffer extends Folk
 			player.sendPacket(html);
 		}
 		else if (currentCommand.startsWith("support"))
-		{
 			showGiveBuffsWindow(player);
-		}
 		else if (currentCommand.startsWith("givebuffs"))
 		{
 			final String schemeName = st.nextToken();
@@ -88,12 +131,13 @@ public class SchemeBuffer extends Folk
 			if (target == null)
 				player.sendMessage("You don't have a pet.");
 			else if (cost == 0 || player.reduceAdena("NPC Buffer", cost, this, true))
-				BufferManager.getInstance().applySchemeEffects(this, target, player.getObjectId(), schemeName);
+			{
+				for (int skillId : BufferManager.getInstance().getScheme(player.getObjectId(), schemeName))
+					SkillTable.getInstance().getInfo(skillId, SkillTable.getInstance().getMaxLevel(skillId)).getEffects(this, target);
+			}
 		}
 		else if (currentCommand.startsWith("editschemes"))
-		{
 			showEditSchemeWindow(player, st.nextToken(), st.nextToken(), Integer.parseInt(st.nextToken()));
-		}
 		else if (currentCommand.startsWith("skill"))
 		{
 			final String groupType = st.nextToken();
@@ -167,8 +211,44 @@ public class SchemeBuffer extends Folk
 			}
 			showGiveBuffsWindow(player);
 		}
+		else if (currentCommand.startsWith("auto"))
+		{
+			for (int buffId : PlayerData.getInstance().getTemplate(player.getClassId()).getBuffIds())
+				SkillTable.getInstance().getInfo(buffId, SkillTable.getInstance().getMaxLevel(buffId)).getEffects(player, player);
+		}
 		
 		super.onBypassFeedback(player, command);
+	}
+	
+	private static void autoBuffFunction(Player player, String bufflist)
+	{
+		ArrayList<L2Skill> skills_to_buff = new ArrayList<>();
+		List<Integer> list = null;
+		if (bufflist.equalsIgnoreCase("fighter"))
+		{
+			list = Config.FIGHTER_SKILL_LIST;
+		}
+		else if (bufflist.equalsIgnoreCase("mage"))
+		{
+			list = Config.MAGE_SKILL_LIST;
+		}
+		if (list != null)
+		{
+			for (int skillId : list)
+			{
+				L2Skill skill = SkillTable.getInstance().getInfo(skillId, SkillTable.getInstance().getMaxLevel(skillId));
+				if (skill == null)
+					continue;
+				skills_to_buff.add(skill);
+			}
+			for (L2Skill sk : skills_to_buff)
+			{
+				sk.getEffects(player, player);
+			}
+			player.updateEffectIcons();
+			list = null;
+		}
+		skills_to_buff.clear();
 	}
 	
 	@Override
@@ -184,8 +264,8 @@ public class SchemeBuffer extends Folk
 	}
 	
 	/**
-	 * Send an html packet to the {@link Player} set a parameter with Give Buffs menu info for player and pet, depending on targetType parameter {player, pet}.
-	 * @param player : The {@link Player} to make checks on.
+	 * Sends an html packet to player with Give Buffs menu info for player and pet, depending on targetType parameter {player, pet}
+	 * @param player : The player to make checks on.
 	 */
 	private void showGiveBuffsWindow(Player player)
 	{
@@ -216,11 +296,11 @@ public class SchemeBuffer extends Folk
 	}
 	
 	/**
-	 * Send an html packet to the {@link Player} set as parameter with Edit Scheme Menu info. This allows the {@link Player} to edit each created scheme (add/delete skills)
-	 * @param player : The {@link Player} to make checks on.
+	 * This sends an html packet to player with Edit Scheme Menu info. This allows player to edit each created scheme (add/delete skills)
+	 * @param player : The player to make checks on.
 	 * @param groupType : The group of skills to select.
 	 * @param schemeName : The scheme to make check.
-	 * @param page : The current checked page.
+	 * @param page The page.
 	 */
 	private void showEditSchemeWindow(Player player, String groupType, String schemeName, int page)
 	{
@@ -237,11 +317,11 @@ public class SchemeBuffer extends Folk
 	}
 	
 	/**
-	 * @param player : The {@link Player} to make checks on.
+	 * @param player : The player to make checks on.
 	 * @param groupType : The group of skills to select.
 	 * @param schemeName : The scheme to make check.
-	 * @param page : The current checked page.
-	 * @return A {@link String} representing skills available for selection for a given groupType.
+	 * @param page The page.
+	 * @return a String representing skills available to selection for a given groupType.
 	 */
 	private String getGroupSkillList(Player player, String groupType, String schemeName, int page)
 	{
@@ -264,7 +344,7 @@ public class SchemeBuffer extends Folk
 		int row = 0;
 		for (int skillId : skills)
 		{
-			final String icon = (skillId < 100) ? "icon.skill00" + skillId : (skillId < 1000) ? "icon.skill0" + skillId : "icon.skill" + skillId;
+			final String icon = (skillId == 4699 || skillId == 4700 ? "icon.skill1331" : skillId == 4702 || skillId == 4703 ? "icon.skill1332" : (skillId < 100) ? "icon.skill00" + skillId : (skillId < 1000) ? "icon.skill0" + skillId : "icon.skill" + skillId);
 			
 			sb.append(((row % 2) == 0 ? "<table width=\"280\" bgcolor=\"000000\"><tr>" : "<table width=\"280\"><tr>"));
 			
@@ -303,7 +383,7 @@ public class SchemeBuffer extends Folk
 	/**
 	 * @param groupType : The group of skills to select.
 	 * @param schemeName : The scheme to make check.
-	 * @return A {@link String} representing all groupTypes available. The group currently on selection isn't linkable.
+	 * @return a string representing all groupTypes available. The group currently on selection isn't linkable.
 	 */
 	private static String getTypesFrame(String groupType, String schemeName)
 	{
@@ -338,8 +418,8 @@ public class SchemeBuffer extends Folk
 	}
 	
 	/**
-	 * @param list : A {@link List} of skill ids.
-	 * @return a global fee for all skills contained in the {@link List}.
+	 * @param list : A list of skill ids.
+	 * @return a global fee for all skills contained in list.
 	 */
 	private static int getFee(ArrayList<Integer> list)
 	{
@@ -348,7 +428,7 @@ public class SchemeBuffer extends Folk
 		
 		int fee = 0;
 		for (int sk : list)
-			fee += BufferManager.getInstance().getAvailableBuff(sk).getPrice();
+			fee += BufferManager.getInstance().getAvailableBuff(sk).getValue();
 		
 		return fee;
 	}

@@ -17,18 +17,14 @@ import net.sf.l2j.commons.lang.StringUtil;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.gameserver.data.SkillTable;
-import net.sf.l2j.gameserver.model.actor.Creature;
-import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
-import net.sf.l2j.gameserver.skills.L2Skill;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 
 /**
  * Loads and stores available {@link BuffSkillHolder}s for the integrated scheme buffer.<br>
- * Loads and stores Players' buff schemes into _schemesTable (under a {@link String} name and a {@link List} of {@link Integer} skill ids).
+ * Loads and stores players' buff schemes into _schemesTable (under a String name and a List of Integer skill ids).
  */
 public class BufferManager implements IXmlReader
 {
@@ -91,7 +87,7 @@ public class BufferManager implements IXmlReader
 			{
 				final NamedNodeMap attrs = buffNode.getAttributes();
 				final int skillId = parseInteger(attrs, "id");
-				_availableBuffs.put(skillId, new BuffSkillHolder(skillId, parseInteger(attrs, "level", SkillTable.getInstance().getMaxLevel(skillId)), parseInteger(attrs, "price", 0), category, parseString(attrs, "desc", "")));
+				_availableBuffs.put(skillId, new BuffSkillHolder(skillId, parseInteger(attrs, "price"), category, parseString(attrs, "desc")));
 			});
 		}));
 	}
@@ -141,24 +137,19 @@ public class BufferManager implements IXmlReader
 		}
 	}
 	
-	/**
-	 * Add or retrieve the Player schemes {@link Map}, then add or update the given scheme based on the {@link String} name set as parameter.
-	 * @param playerId : The Player objectId to check.
-	 * @param schemeName : The {@link String} used as scheme name.
-	 * @param list : The {@link ArrayList} of {@link Integer} used as skill ids.
-	 */
 	public void setScheme(int playerId, String schemeName, ArrayList<Integer> list)
 	{
-		final Map<String, ArrayList<Integer>> schemes = _schemesTable.computeIfAbsent(playerId, (k) -> new TreeMap<>(String.CASE_INSENSITIVE_ORDER));
-		if (schemes.size() >= Config.BUFFER_MAX_SCHEMES)
+		if (!_schemesTable.containsKey(playerId))
+			_schemesTable.put(playerId, new TreeMap<>(String.CASE_INSENSITIVE_ORDER));
+		else if (_schemesTable.get(playerId).size() >= Config.BUFFER_MAX_SCHEMES)
 			return;
 		
-		schemes.put(schemeName, list);
+		_schemesTable.get(playerId).put(schemeName, list);
 	}
 	
 	/**
-	 * @param playerId : The Player objectId to check.
-	 * @return the {@link List} of schemes for a given Player.
+	 * @param playerId : The player objectId to check.
+	 * @return the list of schemes for a given player.
 	 */
 	public Map<String, ArrayList<Integer>> getPlayerSchemes(int playerId)
 	{
@@ -166,80 +157,63 @@ public class BufferManager implements IXmlReader
 	}
 	
 	/**
-	 * @param playerId : The Player objectId to check.
+	 * @param playerId : The player objectId to check.
 	 * @param schemeName : The scheme name to check.
-	 * @return The {@link List} holding {@link L2Skill}s for the given scheme name and Player, or null (if scheme or Player isn't registered).
+	 * @return the List holding skills for the given scheme name and player, or null (if scheme or player isn't registered).
 	 */
 	public List<Integer> getScheme(int playerId, String schemeName)
 	{
-		final Map<String, ArrayList<Integer>> schemes = _schemesTable.get(playerId);
-		if (schemes == null)
+		if (_schemesTable.get(playerId) == null || _schemesTable.get(playerId).get(schemeName) == null)
 			return Collections.emptyList();
 		
-		final ArrayList<Integer> scheme = schemes.get(schemeName);
-		if (scheme == null)
-			return Collections.emptyList();
-		
-		return scheme;
+		return _schemesTable.get(playerId).get(schemeName);
 	}
 	
 	/**
-	 * Apply all effects of a scheme (retrieved by its Player objectId and {@link String} name) upon a {@link Creature} target.
-	 * @param npc : The {@link Npc} which apply effects.
-	 * @param target : The {@link Creature} benefactor.
-	 * @param playerId : The Player objectId to check.
+	 * @param playerId : The player objectId to check.
 	 * @param schemeName : The scheme name to check.
-	 */
-	public void applySchemeEffects(Npc npc, Creature target, int playerId, String schemeName)
-	{
-		for (int skillId : getScheme(playerId, schemeName))
-		{
-			final BuffSkillHolder holder = getAvailableBuff(skillId);
-			if (holder != null)
-			{
-				final L2Skill skill = holder.getSkill();
-				if (skill != null)
-					skill.getEffects(npc, target);
-			}
-		}
-	}
-	
-	/**
-	 * @param playerId : The Player objectId to check.
-	 * @param schemeName : The scheme name to check.
-	 * @param skillId : The {@link L2Skill} id to check.
-	 * @return True if the {@link L2Skill} is already registered on the scheme, or false otherwise.
+	 * @param skillId : The skill id to check.
+	 * @return true if the skill is already registered on the scheme, or false otherwise.
 	 */
 	public boolean getSchemeContainsSkill(int playerId, String schemeName, int skillId)
 	{
-		return getScheme(playerId, schemeName).contains(skillId);
+		final List<Integer> skills = getScheme(playerId, schemeName);
+		if (skills.isEmpty())
+			return false;
+		
+		for (int id : skills)
+		{
+			if (id == skillId)
+				return true;
+		}
+		return false;
 	}
 	
 	/**
-	 * @param groupType : The {@link String} group type of skill ids to return.
-	 * @return a {@link List} of skill ids based on the given {@link String} groupType.
+	 * @param groupType : The type of skills to return.
+	 * @return a list of skills ids based on the given groupType.
 	 */
 	public List<Integer> getSkillsIdsByType(String groupType)
 	{
-		final List<Integer> skills = new ArrayList<>();
-		for (BuffSkillHolder holder : _availableBuffs.values())
+		List<Integer> skills = new ArrayList<>();
+		for (BuffSkillHolder skill : _availableBuffs.values())
 		{
-			if (holder.getType().equalsIgnoreCase(groupType))
-				skills.add(holder.getId());
+			if (skill.getType().equalsIgnoreCase(groupType))
+				skills.add(skill.getId());
 		}
 		return skills;
 	}
 	
 	/**
-	 * @return a {@link List} of all available {@link String} buff types.
+	 * @return a list of all buff types available.
 	 */
 	public List<String> getSkillTypes()
 	{
-		final List<String> skillTypes = new ArrayList<>();
-		for (BuffSkillHolder holder : _availableBuffs.values())
+		List<String> skillTypes = new ArrayList<>();
+		for (BuffSkillHolder skill : _availableBuffs.values())
 		{
-			if (!skillTypes.contains(holder.getType()))
-				skillTypes.add(holder.getType());
+			if (!skillTypes.contains(skill.getType()))
+				skillTypes.add(skill.getType());
 		}
 		return skillTypes;
 	}
