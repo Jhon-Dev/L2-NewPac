@@ -45,6 +45,8 @@ public final class Config
 	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.properties";
 	public static final String BUFF = "./config/custom/Mods/Buff.properties";
 	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.properties";
+
+	public static final String DATAPACK_ROOT = null;
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -1551,6 +1553,7 @@ public final class Config
 	        PARTY_DROP_REWARDS.put(Integer.parseInt(party_drop_reward_splitted_2[1]), Integer.parseInt(party_drop_reward_splitted_2[0]));
 	    }
 	}
+	
 	private static final void EnchantLoad()
 	{
 		final ExProperties Enchant = initProperties(ENCHANT_CUSTOM);

@@ -7,7 +7,6 @@ import java.util.Set;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.model.group.Party;
 import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
 import net.sf.l2j.gameserver.scripting.Quest;
  
@@ -23,8 +22,7 @@ public class PartyDrop extends Quest
         addKillId(Config.NPC_LIST_SET);
     }
  
-    @Override
-	public String onKill(Npc npc, Player player, boolean isPet)
+    public String onKill(Npc npc, Player player, boolean isPet)
     {
         if (player.isInParty())
         {

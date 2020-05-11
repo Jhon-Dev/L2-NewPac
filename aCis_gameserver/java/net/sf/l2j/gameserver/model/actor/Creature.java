@@ -913,6 +913,7 @@ public abstract class Creature extends WorldObject
 		if (!isRunning())
 			setIsRunning(true);
 	}
+	
 	/**
 	 * Make this {@link Creature} walk/run and send related packets to all {@link Player}s.
 	 * @param value : If false, the {@link Creature} will walk. If true, it will run.
@@ -1516,6 +1517,75 @@ public abstract class Creature extends WorldObject
 	public final WorldObject getTarget()
 	{
 		return _target;
+	}
+	
+	/**
+	 * Check if this object is inside the given radius around the given object. Warning: doesn't cover collision radius!
+	 * @param object the target
+	 * @param radius the radius around the target
+	 * @param checkZ should we check Z axis also
+	 * @param strictCheck true if (distance < radius), false if (distance <= radius)
+	 * @return true is the Creature is inside the radius.
+	 */
+	public final boolean isInsideRadius(WorldObject object, int radius, boolean checkZ, boolean strictCheck)
+	{
+		return isInsideRadius(object.getX(), object.getY(), object.getZ(), radius, checkZ, strictCheck);
+	}
+	
+	/**
+	 * Check if this object is inside the given radius around the given object. Warning: doesn't cover collision radius!
+	 * @param loc the Location
+	 * @param radius the radius around the target
+	 * @param checkZ should we check Z axis also
+	 * @param strictCheck true if (distance < radius), false if (distance <= radius)
+	 * @return true is the Creature is inside the radius.
+	 */
+	public final boolean isInsideRadius(Location loc, int radius, boolean checkZ, boolean strictCheck)
+	{
+		return isInsideRadius(loc.getX(), loc.getY(), loc.getZ(), radius, checkZ, strictCheck);
+	}
+	
+	/**
+	 * Check if this object is inside the given plan radius around the given point. Warning: doesn't cover collision radius!
+	 * @param x X position of the target
+	 * @param y Y position of the target
+	 * @param radius the radius around the target
+	 * @param strictCheck true if (distance < radius), false if (distance <= radius)
+	 * @return true is the Creature is inside the radius.
+	 */
+	public final boolean isInsideRadius(int x, int y, int radius, boolean strictCheck)
+	{
+		return isInsideRadius(x, y, 0, radius, false, strictCheck);
+	}
+	
+	/**
+	 * Check if this object is inside the given radius around the given point.
+	 * @param x X position of the target
+	 * @param y Y position of the target
+	 * @param z Z position of the target
+	 * @param radius the radius around the target
+	 * @param checkZ should we check Z axis also
+	 * @param strictCheck true if (distance < radius), false if (distance <= radius)
+	 * @return true is the Creature is inside the radius.
+	 */
+	public final boolean isInsideRadius(int x, int y, int z, int radius, boolean checkZ, boolean strictCheck)
+	{
+		double dx = x - getX();
+		double dy = y - getY();
+		double dz = z - getZ();
+		
+		if (strictCheck)
+		{
+			if (checkZ)
+				return (dx * dx + dy * dy + dz * dz) < radius * radius;
+			
+			return (dx * dx + dy * dy) < radius * radius;
+		}
+		
+		if (checkZ)
+			return (dx * dx + dy * dy + dz * dz) <= radius * radius;
+		
+		return (dx * dx + dy * dy) <= radius * radius;
 	}
 	
 	/**
