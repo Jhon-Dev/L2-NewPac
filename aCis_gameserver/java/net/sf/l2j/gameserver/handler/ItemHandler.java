@@ -31,9 +31,9 @@ import net.sf.l2j.gameserver.handler.itemhandlers.SpiritShots;
 import net.sf.l2j.gameserver.handler.itemhandlers.SummonItems;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 
-import custom.handlers.ClanFull;
-import custom.handlers.DeletePk;
-import custom.handlers.ItemNobles;
+import custom.itemhandlers.ClanFull;
+import custom.itemhandlers.DeletePk;
+import custom.itemhandlers.ItemNobles;
 
 public class ItemHandler
 {

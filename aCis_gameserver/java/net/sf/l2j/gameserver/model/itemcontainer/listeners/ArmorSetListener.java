@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver.model.itemcontainer.listeners;
 
 import net.sf.l2j.gameserver.data.SkillTable;
 import net.sf.l2j.gameserver.data.xml.ArmorSetData;
+import net.sf.l2j.gameserver.enums.skills.AbnormalEffect;
 import net.sf.l2j.gameserver.model.actor.Playable;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
@@ -70,6 +71,24 @@ public class ArmorSetListener implements OnEquipListener
 				if (armorSet.isEnchanted6(player)) // has all parts of set enchanted to 6 or more
 				{
 					int skillId = armorSet.getEnchant6skillId();
+					
+					ItemInstance weaponInst = item;
+					if (weaponInst.isItemList1() && (armorSet.isEffect1(player)))
+					{
+						// Effect Armor Pride
+						player.startAbnormalEffect(AbnormalEffect.SLEEP);
+					}
+					if (weaponInst.isItemList2() && (armorSet.isEffect2(player)))
+					{
+						// Effect Armor Pride
+						player.startAbnormalEffect(AbnormalEffect.SLEEP);
+					}
+					if (weaponInst.isItemList3() && (armorSet.isEffect3(player)))
+					{
+						// Effect Armor Pride
+						player.startAbnormalEffect(AbnormalEffect.SLEEP);
+					}
+					
 					if (skillId > 0)
 					{
 						L2Skill skille = SkillTable.getInstance().getInfo(skillId, 1);
@@ -151,6 +170,10 @@ public class ArmorSetListener implements OnEquipListener
 		if (remove)
 		{
 			if (removeSkillId1 != 0)
+				
+				// Effect Armor Pride
+				player.stopAbnormalEffect(AbnormalEffect.SLEEP);
+			
 			{
 				player.removeSkill(3006, false);
 				player.removeSkill(removeSkillId1, false);

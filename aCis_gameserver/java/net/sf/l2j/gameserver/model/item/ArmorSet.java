@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver.model.item;
 
 import net.sf.l2j.commons.util.StatsSet;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
@@ -198,5 +199,137 @@ public final class ArmorSet
 			return false;
 		
 		return true;
+	}
+	
+	public boolean isEffect1(Player player)
+	{
+		final Inventory inv = player.getInventory();
+		
+		final ItemInstance chestItem = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+		if (chestItem.getEnchantLevel() < Config.ENCHANT_EFFECT_1)
+			return false;
+		
+		int legs = 0;
+		int head = 0;
+		int gloves = 0;
+		int feet = 0;
+		
+		final ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
+		if (legsItem != null && legsItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_1)
+			legs = legsItem.getItemId();
+		
+		if (_set[1] != 0 && _set[1] != legs)
+			return false;
+		
+		final ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
+		if (headItem != null && headItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_1)
+			head = headItem.getItemId();
+		
+		if (_set[2] != 0 && _set[2] != head)
+			return false;
+		
+		final ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
+		if (glovesItem != null && glovesItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_1)
+			gloves = glovesItem.getItemId();
+		
+		if (_set[3] != 0 && _set[3] != gloves)
+			return false;
+		
+		final ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
+		if (feetItem != null && feetItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_1)
+			feet = feetItem.getItemId();
+		
+		if (_set[4] != 0 && _set[4] != feet)
+			return false;
+		
+		return Config.ARMOR_EFFECT;
+	}
+	
+	public boolean isEffect2(Player player)
+	{
+		final Inventory inv = player.getInventory();
+		
+		final ItemInstance chestItem = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+		if (chestItem.getEnchantLevel() < Config.ENCHANT_EFFECT_2)
+			return false;
+		
+		int legs = 0;
+		int head = 0;
+		int gloves = 0;
+		int feet = 0;
+		
+		final ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
+		if (legsItem != null && legsItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_2)
+			legs = legsItem.getItemId();
+		
+		if (_set[1] != 0 && _set[1] != legs)
+			return false;
+		
+		final ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
+		if (headItem != null && headItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_2)
+			head = headItem.getItemId();
+		
+		if (_set[2] != 0 && _set[2] != head)
+			return false;
+		
+		final ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
+		if (glovesItem != null && glovesItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_2)
+			gloves = glovesItem.getItemId();
+		
+		if (_set[3] != 0 && _set[3] != gloves)
+			return false;
+		
+		final ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
+		if (feetItem != null && feetItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_2)
+			feet = feetItem.getItemId();
+		
+		if (_set[4] != 0 && _set[4] != feet)
+			return false;
+		
+		return Config.ARMOR_EFFECT;
+	}
+	
+	public boolean isEffect3(Player player)
+	{
+		final Inventory inv = player.getInventory();
+		
+		final ItemInstance chestItem = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+		if (chestItem.getEnchantLevel() < Config.ENCHANT_EFFECT_3)
+			return false;
+		
+		int legs = 0;
+		int head = 0;
+		int gloves = 0;
+		int feet = 0;
+		
+		final ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
+		if (legsItem != null && legsItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_3)
+			legs = legsItem.getItemId();
+		
+		if (_set[1] != 0 && _set[1] != legs)
+			return false;
+		
+		final ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
+		if (headItem != null && headItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_3)
+			head = headItem.getItemId();
+		
+		if (_set[2] != 0 && _set[2] != head)
+			return false;
+		
+		final ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
+		if (glovesItem != null && glovesItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_3)
+			gloves = glovesItem.getItemId();
+		
+		if (_set[3] != 0 && _set[3] != gloves)
+			return false;
+		
+		final ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
+		if (feetItem != null && feetItem.getEnchantLevel() >= Config.ENCHANT_EFFECT_3)
+			feet = feetItem.getItemId();
+		
+		if (_set[4] != 0 && _set[4] != feet)
+			return false;
+		
+		return Config.ARMOR_EFFECT;
 	}
 }

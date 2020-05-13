@@ -45,8 +45,7 @@ public final class Config
 	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.properties";
 	public static final String BUFF = "./config/custom/Mods/Buff.properties";
 	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.properties";
-
-	public static final String DATAPACK_ROOT = null;
+	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/AbnormalEffect.properties";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -172,10 +171,16 @@ public final class Config
 	public static boolean OFFLINE_SET_NAME_COLOR;
 	public static int OFFLINE_NAME_COLOR;
 	
-	/** Party Drop Config */
+	/** Party Drop */
 	public static String NPC_LIST;
 	public static int[] NPC_LIST_SET;
 	public static Map<Integer, Integer> PARTY_DROP_REWARDS = new HashMap<>();
+	
+	/** Effects Armor */
+	public static boolean ARMOR_EFFECT;
+	public static int ENCHANT_EFFECT_1;
+	public static int ENCHANT_EFFECT_2;
+	public static int ENCHANT_EFFECT_3;
 	
 	/** Enchant Custom */
 	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON;
@@ -1538,20 +1543,29 @@ public final class Config
 	private static final void DropPartyLoad()
 	{
 		final ExProperties DropParty = initProperties(DROP_PARTY);
-	    NPC_LIST = DropParty.getProperty("NpcListPartyDrop", "10506,10507");
-	    
-	    String[] NpcList = NPC_LIST.split(",");
-	    NPC_LIST_SET = new int[NpcList.length];
-	    for (int i = 0; i < NpcList.length; i++)
-	        NPC_LIST_SET[i] = Integer.parseInt(NpcList[i]);
-	   
-	    String PARTY_DROP_REWARD_VALUE = DropParty.getProperty("PartyDropReward", "57,100000000;");
-	    String[] party_drop_reward_splitted_1 = PARTY_DROP_REWARD_VALUE.split(";");
-	    for (String i : party_drop_reward_splitted_1)
-	    {
-	        String[] party_drop_reward_splitted_2 = i.split(",");
-	        PARTY_DROP_REWARDS.put(Integer.parseInt(party_drop_reward_splitted_2[1]), Integer.parseInt(party_drop_reward_splitted_2[0]));
-	    }
+		NPC_LIST = DropParty.getProperty("NpcListPartyDrop", "10506,10507");
+		
+		String[] NpcList = NPC_LIST.split(",");
+		NPC_LIST_SET = new int[NpcList.length];
+		for (int i = 0; i < NpcList.length; i++)
+			NPC_LIST_SET[i] = Integer.parseInt(NpcList[i]);
+		
+		String PARTY_DROP_REWARD_VALUE = DropParty.getProperty("PartyDropReward", "57,100000000;");
+		String[] party_drop_reward_splitted_1 = PARTY_DROP_REWARD_VALUE.split(";");
+		for (String i : party_drop_reward_splitted_1)
+		{
+			String[] party_drop_reward_splitted_2 = i.split(",");
+			PARTY_DROP_REWARDS.put(Integer.parseInt(party_drop_reward_splitted_2[1]), Integer.parseInt(party_drop_reward_splitted_2[0]));
+		}
+	}
+	
+	private static final void EffectsLoad()
+	{
+		final ExProperties Effects = initProperties(ABNORMAL_EFFECT);
+		ARMOR_EFFECT = Effects.getProperty("ArmorEffect", false);
+		ENCHANT_EFFECT_1 = Effects.getProperty("EnchantEffect1", 13);
+		ENCHANT_EFFECT_2 = Effects.getProperty("EnchantEffect2", 16);
+		ENCHANT_EFFECT_3 = Effects.getProperty("EnchantEffect3", 25);
 	}
 	
 	private static final void EnchantLoad()
@@ -2980,6 +2994,9 @@ public final class Config
 		
 		// DropParty settings
 		DropPartyLoad();
+		
+		// Abnormal settings
+		EffectsLoad();
 		
 	}
 	
