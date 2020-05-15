@@ -136,8 +136,33 @@ public final class Gatekeeper extends Folk
 			}
 			showChatWindow(player, val);
 		}
+		else if (command.startsWith("change_zone"))
+		{
+			showChangeWindow(player);
+		}
+		
 		else
 			super.onBypassFeedback(player, command);
+	}
+	
+	public void showChangeWindow(Player player)
+	{
+		NpcHtmlMessage html = new NpcHtmlMessage(1);
+		StringBuilder sb = new StringBuilder();
+		sb.append("<html><head><title>PvP Zone</title></head><body><center><br>");
+		
+		sb.append("<font color=\"LEVEL\">(Auto PvPZone & PvP King Zone - No Bishop)</font><br1>");
+		// PvPZoneManager.getInstance().getMessage(player.getObjectId(), sb);
+		sb.append("<br><br>");
+		sb.append("<font color=\"LEVEL\">(Special PvP Arenas)</font>");
+		sb.append("<a action=\"bypass -h npc_%objectId%_goto 80031\">Imperial Tomb</a><br1>");
+		sb.append("<a action=\"bypass -h npc_%objectId%_goto 80032\">Antharas' Lair</a><br1>");
+		sb.append("<a action=\"bypass -h npc_%objectId%_goto 80033\">Talking Island</a><br1>");
+		sb.append("<br1><img src=\"l2ui.squaregray\" width=\"230\" height=\"1s\"><br1>");
+		sb.append("</center></body></html>");
+		html.setHtml(sb.toString());
+		html.replace("%objectId%", String.valueOf(getObjectId()));
+		player.sendPacket(html);
 	}
 	
 	@Override

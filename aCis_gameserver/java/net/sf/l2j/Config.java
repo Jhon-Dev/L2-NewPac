@@ -46,6 +46,7 @@ public final class Config
 	public static final String BUFF = "./config/custom/Mods/Buff.properties";
 	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.properties";
 	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/AbnormalEffect.properties";
+	public static final String TOURNAMENTE_FILE = "./config/custom/Events/Tournament.properties";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -181,6 +182,86 @@ public final class Config
 	public static int ENCHANT_EFFECT_1;
 	public static int ENCHANT_EFFECT_2;
 	public static int ENCHANT_EFFECT_3;
+	
+	/** Tournament Configs */
+	public static boolean TOURNAMENT_EVENT_START;
+	public static boolean TOURNAMENT_EVENT_TIME;
+	public static boolean TOURNAMENT_EVENT_SUMMON;
+	public static boolean TOURNAMENT_EVENT_ANNOUNCE;
+	public static int TOURNAMENT_TIME;
+	public static String[] TOURNAMENT_EVENT_INTERVAL_BY_TIME_OF_DAY;
+	public static String TITLE_COLOR_TEAM1;
+	public static String TITLE_COLOR_TEAM2;
+	public static String MSG_TEAM1;
+	public static String MSG_TEAM2;
+	public static int ARENA_NPC;
+	public static int NPC_locx;
+	public static int NPC_locy;
+	public static int NPC_locz;
+	public static int NPC_Heading;
+	public static int Tournament_locx;
+	public static int Tournament_locy;
+	public static int Tournament_locz;
+	public static boolean ALLOW_2X2_REGISTER;
+	public static boolean ALLOW_4X4_REGISTER;
+	public static boolean ALLOW_9X9_REGISTER;
+	public static boolean ALLOW_4X4_LOSTBUFF;
+	public static boolean ARENA_MESSAGE_ENABLED;
+	public static String ARENA_MESSAGE_TEXT;
+	public static int ARENA_MESSAGE_TIME;
+	public static int ARENA_EVENT_COUNT;
+	public static int[][] ARENA_EVENT_LOCS;
+	public static int ARENA_EVENT_COUNT_4X4;
+	public static int[][] ARENA_EVENT_LOCS_4X4;
+	public static int ARENA_EVENT_COUNT_9X9;
+	public static int[][] ARENA_EVENT_LOCS_9X9;
+	public static int duelist_COUNT_4X4;
+	public static int dreadnought_COUNT_4X4;
+	public static int tanker_COUNT_4X4;
+	public static int dagger_COUNT_4X4;
+	public static int archer_COUNT_4X4;
+	public static int bs_COUNT_4X4;
+	public static int archmage_COUNT_4X4;
+	public static int soultaker_COUNT_4X4;
+	public static int mysticMuse_COUNT_4X4;
+	public static int stormScreamer_COUNT_4X4;
+	public static int titan_COUNT_4X4;
+	public static int dominator_COUNT_4X4;
+	public static int doomcryer_COUNT_4X4;
+	public static int duelist_COUNT_9X9;
+	public static int dreadnought_COUNT_9X9;
+	public static int tanker_COUNT_9X9;
+	public static int dagger_COUNT_9X9;
+	public static int archer_COUNT_9X9;
+	public static int bs_COUNT_9X9;
+	public static int archmage_COUNT_9X9;
+	public static int soultaker_COUNT_9X9;
+	public static int mysticMuse_COUNT_9X9;
+	public static int stormScreamer_COUNT_9X9;
+	public static int titan_COUNT_9X9;
+	public static int grandKhauatari_COUNT_9X9;
+	public static int dominator_COUNT_9X9;
+	public static int doomcryer_COUNT_9X9;
+	public static int ARENA_PVP_AMOUNT;
+	public static int ARENA_REWARD_ID;
+	public static int ARENA_WIN_REWARD_COUNT;
+	public static int ARENA_LOST_REWARD_COUNT;
+	public static int ARENA_WIN_REWARD_COUNT_4X4;
+	public static int ARENA_LOST_REWARD_COUNT_4X4;
+	public static int ARENA_WIN_REWARD_COUNT_9X9;
+	public static int ARENA_LOST_REWARD_COUNT_9X9;
+	public static int ARENA_CHECK_INTERVAL;
+	public static int ARENA_CALL_INTERVAL;
+	public static int ARENA_WAIT_INTERVAL_4X4;
+	public static int ARENA_WAIT_INTERVAL_9X9;
+	public static int ARENA_WAIT_INTERVAL;
+	public static String TOURNAMENT_ID_RESTRICT;
+	public static List<Integer> TOURNAMENT_LISTID_RESTRICT;
+	public static boolean ARENA_SKILL_PROTECT;
+	public static List<Integer> ARENA_SKILL_LIST = new ArrayList<>();
+	public static List<Integer> ARENA_DISABLE_SKILL_LIST = new ArrayList<>();
+	public static List<Integer> ARENA_STOP_SKILL_LIST = new ArrayList<>();
+	public static List<Integer> ARENA_DISABLE_SKILL_LIST_PERM = new ArrayList<>();
 	
 	/** Enchant Custom */
 	public static boolean ENABLE_MODIFY_BLESSED_ENCHANT_CHANCE_WEAPON;
@@ -1566,6 +1647,142 @@ public final class Config
 		ENCHANT_EFFECT_1 = Effects.getProperty("EnchantEffect1", 13);
 		ENCHANT_EFFECT_2 = Effects.getProperty("EnchantEffect2", 16);
 		ENCHANT_EFFECT_3 = Effects.getProperty("EnchantEffect3", 25);
+	}
+	
+	/**
+	 * Loads tournament settings.
+	 */
+	private static final void TournamentLoad()
+	{
+		final ExProperties Tournament = initProperties(Config.TOURNAMENTE_FILE);
+		TOURNAMENT_EVENT_START = Tournament.getProperty("TournamentStartOn", false);
+		TOURNAMENT_EVENT_TIME = Tournament.getProperty("TournamentAutoEvent", false);
+		TOURNAMENT_EVENT_SUMMON = Tournament.getProperty("TournamentSummon", false);
+		TOURNAMENT_EVENT_ANNOUNCE = Tournament.getProperty("TournamenAnnounce", false);
+		
+		TOURNAMENT_EVENT_INTERVAL_BY_TIME_OF_DAY = Tournament.getProperty("TournamentStartTime", "20:00").split(",");
+		
+		TOURNAMENT_TIME = Integer.parseInt(Tournament.getProperty("TournamentEventTime", "1"));
+		
+		TITLE_COLOR_TEAM1 = Tournament.getProperty("TitleColorTeam_1", "FFFFFF");
+		TITLE_COLOR_TEAM2 = Tournament.getProperty("TitleColorTeam_2", "FFFFFF");
+		
+		MSG_TEAM1 = Tournament.getProperty("TitleTeam_1", "Team [1]");
+		MSG_TEAM2 = Tournament.getProperty("TitleTeam_2", "Team [2]");
+		
+		ARENA_NPC = Integer.parseInt(Tournament.getProperty("NPCRegister", "1"));
+		
+		NPC_locx = Integer.parseInt(Tournament.getProperty("Locx", "1"));
+		NPC_locy = Integer.parseInt(Tournament.getProperty("Locy", "1"));
+		NPC_locz = Integer.parseInt(Tournament.getProperty("Locz", "1"));
+		NPC_Heading = Integer.parseInt(Tournament.getProperty("Heading", "1"));
+		
+		Tournament_locx = Integer.parseInt(Tournament.getProperty("TournamentLocx", "1"));
+		Tournament_locy = Integer.parseInt(Tournament.getProperty("TournamentLocy", "1"));
+		Tournament_locz = Integer.parseInt(Tournament.getProperty("TournamentLocz", "1"));
+		
+		ALLOW_2X2_REGISTER = Boolean.parseBoolean(Tournament.getProperty("Allow2x2Register", "true"));
+		ALLOW_4X4_REGISTER = Boolean.parseBoolean(Tournament.getProperty("Allow4x4Register", "true"));
+		ALLOW_9X9_REGISTER = Boolean.parseBoolean(Tournament.getProperty("Allow9x9Register", "true"));
+		
+		ALLOW_4X4_LOSTBUFF = Boolean.parseBoolean(Tournament.getProperty("Allow4x4LostBuff", "false"));
+		
+		ARENA_MESSAGE_ENABLED = Boolean.parseBoolean(Tournament.getProperty("ScreenArenaMessageEnable", "false"));
+		ARENA_MESSAGE_TEXT = Tournament.getProperty("ScreenArenaMessageText", "Welcome to L2J server!");
+		ARENA_MESSAGE_TIME = Integer.parseInt(Tournament.getProperty("ScreenArenaMessageTime", "10")) * 1000;
+		
+		String[] arenaLocs = Tournament.getProperty("ArenasLoc", "").split(";");
+		String[] locSplit = null;
+		ARENA_EVENT_COUNT = arenaLocs.length;
+		ARENA_EVENT_LOCS = new int[ARENA_EVENT_COUNT][3];
+		for (int i = 0; i < ARENA_EVENT_COUNT; i++)
+		{
+			locSplit = arenaLocs[i].split(",");
+			for (int j = 0; j < 3; j++)
+				ARENA_EVENT_LOCS[i][j] = Integer.parseInt(locSplit[j].trim());
+		}
+		String[] arenaLocs4x4 = Tournament.getProperty("Arenas4x4Loc", "").split(";");
+		String[] locSplit4x4 = null;
+		ARENA_EVENT_COUNT_4X4 = arenaLocs4x4.length;
+		ARENA_EVENT_LOCS_4X4 = new int[ARENA_EVENT_COUNT_4X4][3];
+		for (int i = 0; i < ARENA_EVENT_COUNT_4X4; i++)
+		{
+			locSplit4x4 = arenaLocs4x4[i].split(",");
+			for (int j = 0; j < 3; j++)
+				ARENA_EVENT_LOCS_4X4[i][j] = Integer.parseInt(locSplit4x4[j].trim());
+		}
+		String[] arenaLocs9x9 = Tournament.getProperty("Arenas9x9Loc", "").split(";");
+		String[] locSplit8x8 = null;
+		ARENA_EVENT_COUNT_9X9 = arenaLocs9x9.length;
+		ARENA_EVENT_LOCS_9X9 = new int[ARENA_EVENT_COUNT_9X9][3];
+		int j;
+		for (int i = 0; i < ARENA_EVENT_COUNT_9X9; i++)
+		{
+			locSplit8x8 = arenaLocs9x9[i].split(",");
+			for (j = 0; j < 3; j++)
+				ARENA_EVENT_LOCS_9X9[i][j] = Integer.parseInt(locSplit8x8[j].trim());
+		}
+		duelist_COUNT_4X4 = Tournament.getProperty("duelist_amount_4x4", 1);
+		dreadnought_COUNT_4X4 = Tournament.getProperty("dreadnought_amount_4x4", 1);
+		tanker_COUNT_4X4 = Tournament.getProperty("tanker_amount_4x4", 1);
+		dagger_COUNT_4X4 = Tournament.getProperty("dagger_amount_4x4", 1);
+		archer_COUNT_4X4 = Tournament.getProperty("archer_amount_4x4", 1);
+		bs_COUNT_4X4 = Tournament.getProperty("bs_amount_4x4", 1);
+		archmage_COUNT_4X4 = Tournament.getProperty("archmage_amount_4x4", 1);
+		soultaker_COUNT_4X4 = Tournament.getProperty("soultaker_amount_4x4", 1);
+		mysticMuse_COUNT_4X4 = Tournament.getProperty("mysticMuse_amount_4x4", 1);
+		stormScreamer_COUNT_4X4 = Tournament.getProperty("stormScreamer_amount_4x4", 1);
+		titan_COUNT_4X4 = Tournament.getProperty("titan_amount_4x4", 1);
+		dominator_COUNT_4X4 = Tournament.getProperty("dominator_amount_4x4", 1);
+		doomcryer_COUNT_4X4 = Tournament.getProperty("doomcryer_amount_4x4", 1);
+		
+		duelist_COUNT_9X9 = Tournament.getProperty("duelist_amount_9x9", 1);
+		dreadnought_COUNT_9X9 = Tournament.getProperty("dreadnought_amount_9x9", 1);
+		tanker_COUNT_9X9 = Tournament.getProperty("tanker_amount_9x9", 1);
+		dagger_COUNT_9X9 = Tournament.getProperty("dagger_amount_9x9", 1);
+		archer_COUNT_9X9 = Tournament.getProperty("archer_amount_9x9", 1);
+		bs_COUNT_9X9 = Tournament.getProperty("bs_amount_9x9", 1);
+		archmage_COUNT_9X9 = Tournament.getProperty("archmage_amount_9x9", 1);
+		soultaker_COUNT_9X9 = Tournament.getProperty("soultaker_amount_9x9", 1);
+		mysticMuse_COUNT_9X9 = Tournament.getProperty("mysticMuse_amount_9x9", 1);
+		stormScreamer_COUNT_9X9 = Tournament.getProperty("stormScreamer_amount_9x9", 1);
+		titan_COUNT_9X9 = Tournament.getProperty("titan_amount_9x9", 1);
+		grandKhauatari_COUNT_9X9 = Tournament.getProperty("grandKhauatari_amount_9x9", 1);
+		dominator_COUNT_9X9 = Tournament.getProperty("dominator_amount_9x9", 1);
+		doomcryer_COUNT_9X9 = Tournament.getProperty("doomcryer_amount_9x9", 1);
+		
+		ARENA_PVP_AMOUNT = Tournament.getProperty("ArenaPvpJoin", 10);
+		ARENA_REWARD_ID = Tournament.getProperty("ArenaRewardId", 57);
+		ARENA_WIN_REWARD_COUNT = Tournament.getProperty("ArenaWinRewardCount", 1);
+		ARENA_LOST_REWARD_COUNT = Tournament.getProperty("ArenaLostRewardCount", 1);
+		
+		ARENA_WIN_REWARD_COUNT_4X4 = Tournament.getProperty("ArenaWinRewardCount4x4", 1);
+		ARENA_LOST_REWARD_COUNT_4X4 = Tournament.getProperty("ArenaLostRewardCount4x4", 1);
+		
+		ARENA_WIN_REWARD_COUNT_9X9 = Tournament.getProperty("ArenaWinRewardCount9x9", 1);
+		ARENA_LOST_REWARD_COUNT_9X9 = Tournament.getProperty("ArenaLostRewardCount9x9", 1);
+		
+		ARENA_CHECK_INTERVAL = Tournament.getProperty("ArenaBattleCheckInterval", 15) * 1000;
+		ARENA_CALL_INTERVAL = Tournament.getProperty("ArenaBattleCallInterval", 60);
+		
+		ARENA_WAIT_INTERVAL = Tournament.getProperty("ArenaBattleWaitInterval", 20);
+		ARENA_WAIT_INTERVAL_4X4 = Tournament.getProperty("ArenaBattleWaitInterval4x4", 45);
+		ARENA_WAIT_INTERVAL_9X9 = Tournament.getProperty("ArenaBattleWaitInterval9x9", 45);
+		
+		TOURNAMENT_ID_RESTRICT = Tournament.getProperty("ItemsRestriction");
+		
+		TOURNAMENT_LISTID_RESTRICT = new ArrayList<>();
+		for (String id : TOURNAMENT_ID_RESTRICT.split(","))
+			TOURNAMENT_LISTID_RESTRICT.add(Integer.valueOf(Integer.parseInt(id)));
+		ARENA_SKILL_PROTECT = Boolean.parseBoolean(Tournament.getProperty("ArenaSkillProtect", "false"));
+		for (String id : Tournament.getProperty("ArenaDisableSkillList", "0").split(","))
+			ARENA_SKILL_LIST.add(Integer.valueOf(Integer.parseInt(id)));
+		for (String id : Tournament.getProperty("DisableSkillList", "0").split(","))
+			ARENA_DISABLE_SKILL_LIST_PERM.add(Integer.valueOf(Integer.parseInt(id)));
+		for (String id : Tournament.getProperty("ArenaDisableSkillList_noStart", "0").split(","))
+			ARENA_DISABLE_SKILL_LIST.add(Integer.valueOf(Integer.parseInt(id)));
+		for (String id : Tournament.getProperty("ArenaStopSkillList", "0").split(","))
+			ARENA_STOP_SKILL_LIST.add(Integer.valueOf(Integer.parseInt(id)));
 	}
 	
 	private static final void EnchantLoad()
@@ -2998,6 +3215,8 @@ public final class Config
 		// Abnormal settings
 		EffectsLoad();
 		
+		// Tournament settings
+		TournamentLoad();
 	}
 	
 	public static final void loadLoginServer()

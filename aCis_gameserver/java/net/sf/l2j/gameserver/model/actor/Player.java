@@ -62,6 +62,7 @@ import net.sf.l2j.gameserver.enums.LootRule;
 import net.sf.l2j.gameserver.enums.MessageType;
 import net.sf.l2j.gameserver.enums.PolyType;
 import net.sf.l2j.gameserver.enums.PunishmentType;
+import net.sf.l2j.gameserver.enums.SayType;
 import net.sf.l2j.gameserver.enums.ScriptEventType;
 import net.sf.l2j.gameserver.enums.ShortcutType;
 import net.sf.l2j.gameserver.enums.SiegeSide;
@@ -162,6 +163,7 @@ import net.sf.l2j.gameserver.network.serverpackets.ChairSit;
 import net.sf.l2j.gameserver.network.serverpackets.ChangeWaitType;
 import net.sf.l2j.gameserver.network.serverpackets.CharInfo;
 import net.sf.l2j.gameserver.network.serverpackets.ConfirmDlg;
+import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
 import net.sf.l2j.gameserver.network.serverpackets.DeleteObject;
 import net.sf.l2j.gameserver.network.serverpackets.EtcStatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ExAutoSoulShot;
@@ -231,6 +233,8 @@ import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
 import net.sf.l2j.gameserver.taskmanager.PvpFlagTaskManager;
 import net.sf.l2j.gameserver.taskmanager.ShadowItemTaskManager;
 import net.sf.l2j.gameserver.taskmanager.WaterTaskManager;
+
+import custom.events.main.ArenaTask;
 
 /**
  * This class represents a player in the world.<br>
@@ -304,6 +308,7 @@ public final class Player extends Playable
 	private int _lastCompassZone; // the last compass zone update send to the client
 	
 	private boolean _isIn7sDungeon;
+	public boolean atEvent;
 	
 	private final Punishment _punishment = new Punishment(this);
 	private final RecipeBook _recipeBook = new RecipeBook(this);
@@ -508,6 +513,24 @@ public final class Player extends Playable
 	
 	private Door _requestedGate;
 	private int _nameChangeItemId;
+	
+	private boolean _TournamentTeleport;
+	public int _originalTitleColorTournament = 0;
+	public String _originalTitleTournament;
+	public int duelist_cont = 0;
+	public int dreadnought_cont = 0;
+	public int tanker_cont = 0;
+	public int dagger_cont = 0;
+	public int archer_cont = 0;
+	public int bs_cont = 0;
+	public int archmage_cont = 0;
+	public int soultaker_cont = 0;
+	public int mysticMuse_cont = 0;
+	public int stormScreamer_cont = 0;
+	public int titan_cont = 0;
+	public int grandKhauatari_cont = 0;
+	public int dominator_cont = 0;
+	public int doomcryer_cont = 0;
 	
 	/**
 	 * Constructor of Player (use Creature constructor).
@@ -1305,6 +1328,113 @@ public final class Player extends Playable
 	public int getWeightPenalty()
 	{
 		return _curWeightPenalty;
+	}
+	
+	public int getNameChangeItemId()
+	{
+		return _nameChangeItemId;
+	}
+	
+	public void setNameChangeItemId(int itemId)
+	{
+		_nameChangeItemId = itemId;
+	}
+	
+	private boolean inArenaEvent = false;
+	
+	public void setInArenaEvent(boolean val)
+	{
+		inArenaEvent = val;
+	}
+	
+	public boolean isInArenaEvent()
+	{
+		return inArenaEvent;
+	}
+	
+	public boolean isArenaAttack()
+	{
+		return _ArenaAttack;
+	}
+	
+	private boolean _ArenaAttack;
+	
+	public void setArenaAttack(boolean comm)
+	{
+		_ArenaAttack = comm;
+	}
+	
+	private boolean _ArenaProtection;
+	
+	public void setArenaProtection(boolean comm)
+	{
+		_ArenaProtection = comm;
+	}
+	
+	public boolean isArenaProtection()
+	{
+		return _ArenaProtection;
+	}
+	
+	public void sendChatMessage(int objectId, SayType messageType, String charName, String text)
+	{
+		sendPacket(new CreatureSay(objectId, messageType, charName, text));
+	}
+	
+	private boolean _Arena9x9;
+	private boolean _Arena4x4;
+	private boolean _Arena2x2;
+	private boolean _isStopMov = false;
+	private boolean _ArenaObserv;
+	
+	public void setArena9x9(boolean comm)
+	{
+		_Arena9x9 = comm;
+	}
+	
+	public boolean isArena9x9()
+	{
+		return _Arena9x9;
+	}
+	
+	public void setArena4x4(boolean comm)
+	{
+		_Arena4x4 = comm;
+	}
+	
+	public boolean isArena4x4()
+	{
+		return _Arena4x4;
+	}
+	
+	public void setArena2x2(boolean comm)
+	{
+		_Arena2x2 = comm;
+	}
+	
+	public boolean isArena2x2()
+	{
+		return _Arena2x2;
+	}
+	
+	public void setArenaObserv(boolean comm)
+	{
+		_ArenaObserv = comm;
+	}
+	
+	public boolean isArenaObserv()
+	{
+		return _ArenaObserv;
+	}
+	
+	public boolean isStopArena()
+	{
+		return _isStopMov;
+	}
+	
+	public void setStopArena(boolean value)
+	{
+		_isStopMov = value;
 	}
 	
 	/**
@@ -3174,6 +3304,11 @@ public final class Player extends Playable
 		return true;
 	}
 	
+	public boolean isInFunEvent()
+	{
+		return (atEvent || (ArenaTask.is_started() && !isGM()));
+	}
+	
 	private void onDieDropItem(Creature killer)
 	{
 		if (killer == null)
@@ -3729,7 +3864,7 @@ public final class Player extends Playable
 	
 	public boolean isOfflineMode()
 	{
-		return isOfflineShop;	
+		return isOfflineShop;
 	}
 	
 	public void setOfflineMode(boolean off)
@@ -3768,7 +3903,7 @@ public final class Player extends Playable
 	{
 		_offlineShopStart = time;
 	}
-
+	
 	/**
 	 * @return true if this {@link Player} is set on any store mode (which means he is sitting with a panel above his head).
 	 */
@@ -4479,6 +4614,7 @@ public final class Player extends Playable
 	{
 		return _lastAction < System.currentTimeMillis();
 	}
+	
 	/**
 	 * Return True if the Player is invulnerable.
 	 */
@@ -8226,6 +8362,32 @@ public final class Player extends Playable
 		broadcastPacket(new Revive(this));
 	}
 	
+	public int _lastX;
+	public int _lastY;
+	public int _lastZ;
+	
+	public int getLastX()
+	{
+		return _lastX;
+	}
+	
+	public int getLastY()
+	{
+		return _lastY;
+	}
+	
+	public int getLastZ()
+	{
+		return _lastZ;
+	}
+	
+	public void setLastCords(int x, int y, int z)
+	{
+		_lastX = x;
+		_lastY = y;
+		_lastZ = z;
+	}
+	
 	@Override
 	public void onInteract(Player player)
 	{
@@ -8246,13 +8408,35 @@ public final class Player extends Playable
 		}
 	}
 	
-	public int getNameChangeItemId()
+	public void enteredNoLanding(int delay)
 	{
-		return _nameChangeItemId;
+		_dismountTask = ThreadPool.schedule(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				dismount();
+			}
+		}, delay * 1000);
 	}
 	
-	public void setNameChangeItemId(int itemId)
+	public void exitedNoLanding()
 	{
-		_nameChangeItemId = itemId;
+		if (_dismountTask != null)
+		{
+			_dismountTask.cancel(true);
+			_dismountTask = null;
+		}
 	}
+	
+	public void setTournamentTeleport(boolean comm)
+	{
+		_TournamentTeleport = comm;
+	}
+	
+	public boolean isTournamentTeleport()
+	{
+		return _TournamentTeleport;
+	}
+	
 }

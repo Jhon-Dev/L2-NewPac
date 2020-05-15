@@ -40,6 +40,7 @@ import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.Die;
 import net.sf.l2j.gameserver.network.serverpackets.EtcStatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ExMailArrived;
+import net.sf.l2j.gameserver.network.serverpackets.ExShowScreenMessage;
 import net.sf.l2j.gameserver.network.serverpackets.ExStorageMaxCount;
 import net.sf.l2j.gameserver.network.serverpackets.FriendList;
 import net.sf.l2j.gameserver.network.serverpackets.HennaInfo;
@@ -58,6 +59,8 @@ import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.skills.L2Skill;
 import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
+
+import custom.events.main.ArenaTask;
 
 public class EnterWorld extends L2GameClientPacket
 {
@@ -226,6 +229,9 @@ public class EnterWorld extends L2GameClientPacket
 		player.sendPacket(SystemMessageId.WELCOME_TO_LINEAGE);
 		player.sendPacket(SevenSignsManager.getInstance().getCurrentPeriod().getMessageId());
 		AnnouncementData.getInstance().showAnnouncements(player, false);
+		
+		if (ArenaTask.is_started() && Config.ARENA_MESSAGE_ENABLED)
+			player.sendPacket(new ExShowScreenMessage(Config.ARENA_MESSAGE_TEXT, Config.ARENA_MESSAGE_TIME, 2, true));
 		
 		// if player is DE, check for shadow sense skill at night
 		if (player.getRace() == ClassRace.DARK_ELF && player.hasSkill(L2Skill.SKILL_SHADOW_SENSE))

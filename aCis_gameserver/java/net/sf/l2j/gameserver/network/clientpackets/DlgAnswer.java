@@ -1,9 +1,12 @@
 package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.Announcements;
 import net.sf.l2j.gameserver.model.World;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.network.SystemMessageId;
+
+import custom.events.main.ArenaTask;
 
 public final class DlgAnswer extends L2GameClientPacket
 {
@@ -29,6 +32,10 @@ public final class DlgAnswer extends L2GameClientPacket
 		if (_messageId == SystemMessageId.RESSURECTION_REQUEST_BY_S1.getId() || _messageId == SystemMessageId.DO_YOU_WANT_TO_BE_RESTORED.getId())
 			player.reviveAnswer(_answer);
 		else if (_messageId == SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId())
+			
+			if ((Announcements.isSummoning == true) && (_answer == 1))
+				player.teleportTo(ArenaTask.loc1x(), ArenaTask.loc1y(), ArenaTask.loc1z(), 125);
+			
 		{
 			if (_answer == 1)
 			{

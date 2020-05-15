@@ -21,7 +21,9 @@ public enum ZoneId
 	CAST_ON_ARTIFACT(16),
 	NO_RESTART(17),
 	SCRIPT(18),
-	BOSS(19);
+	BOSS(19),
+	ARENA_EVENT(20),
+	TORURNAMENT_ARENA(21);
 	
 	private final int _id;
 	

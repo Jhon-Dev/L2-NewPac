@@ -104,6 +104,11 @@ import net.sf.l2j.util.DeadLockDetector;
 import net.sf.l2j.util.IPv4Filter;
 
 import custom.data.sql.OfflineTradersData;
+import custom.events.Arena2x2;
+import custom.events.Arena4x4;
+import custom.events.Arena9x9;
+import custom.events.main.ArenaEvent;
+import custom.events.main.ArenaTask;
 
 public class GameServer
 {
@@ -274,6 +279,24 @@ public class GameServer
 		
 		if (Config.ALT_FISH_CHAMPIONSHIP_ENABLED)
 			FishingChampionshipManager.getInstance();
+		
+		StringUtil.printSection("Tournament Event");
+		
+		ThreadPool.schedule(Arena2x2.getInstance(), 5000L);
+		ThreadPool.schedule(Arena9x9.getInstance(), 5000L);
+		ThreadPool.schedule(Arena4x4.getInstance(), 5000L);
+		if (Config.TOURNAMENT_EVENT_TIME)
+		{
+			LOGGER.info("Tournament Event is enabled.");
+			ArenaEvent.getInstance().StartCalculationOfNextEventTime();
+		}
+		else if (Config.TOURNAMENT_EVENT_START)
+		{
+			LOGGER.info("Tournament Event is enabled.");
+			ArenaTask.spawnNpc1();
+		}
+		else
+			LOGGER.info("Tournament Event is disabled");
 		
 		StringUtil.printSection("Handlers");
 		LOGGER.info("Loaded {} admin command handlers.", AdminCommandHandler.getInstance().size());

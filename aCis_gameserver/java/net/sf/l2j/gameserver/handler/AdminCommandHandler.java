@@ -22,6 +22,7 @@ import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminGm;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminGmChat;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminHeal;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminHelpPage;
+import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminInventory;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminKick;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminKnownlist;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminMaintenance;
@@ -35,6 +36,7 @@ import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminPledge;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminPolymorph;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminRes;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminRideWyvern;
+import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSearch;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminShop;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSiege;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSkill;
@@ -42,9 +44,8 @@ import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSpawn;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminTarget;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminTeleport;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminTest;
+import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminTournament;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminZone;
-
-import custom.admincommandhandlers.AdminSearch;
 
 public class AdminCommandHandler
 {
@@ -92,7 +93,10 @@ public class AdminCommandHandler
 		registerHandler(new AdminTeleport());
 		registerHandler(new AdminTest());
 		registerHandler(new AdminZone());
+		
 		registerHandler(new AdminSearch());
+		registerHandler(new AdminInventory());
+		registerHandler(new AdminTournament());
 
 	}
 	
