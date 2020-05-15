@@ -47,6 +47,7 @@ public final class Config
 	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.properties";
 	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/AbnormalEffect.properties";
 	public static final String TOURNAMENTE_FILE = "./config/custom/Events/Tournament.properties";
+	public static final String TROCAR_TEMPO = "./config/custom/Events/TrocarTempo.properties";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -182,6 +183,11 @@ public final class Config
 	public static int ENCHANT_EFFECT_1;
 	public static int ENCHANT_EFFECT_2;
 	public static int ENCHANT_EFFECT_3;
+	
+	/** Trocar Tempo */
+	public static boolean CUSTON_ONLINETIME;
+	public static int ID_REWARD;
+	public static int MIN_PVP;
 	
 	/** Tournament Configs */
 	public static boolean TOURNAMENT_EVENT_START;
@@ -1649,9 +1655,14 @@ public final class Config
 		ENCHANT_EFFECT_3 = Effects.getProperty("EnchantEffect3", 25);
 	}
 	
-	/**
-	 * Loads tournament settings.
-	 */
+	private static final void TrocarTempoLoad()
+	{
+		final ExProperties TrocarTempo = initProperties(TROCAR_TEMPO);
+		CUSTON_ONLINETIME = TrocarTempo.getProperty("OnlineReward", false);
+		ID_REWARD = TrocarTempo.getProperty("IdReward", 57);
+		MIN_PVP = TrocarTempo.getProperty("MinPvp", 200);
+	}
+	
 	private static final void TournamentLoad()
 	{
 		final ExProperties Tournament = initProperties(Config.TOURNAMENTE_FILE);
@@ -3217,6 +3228,9 @@ public final class Config
 		
 		// Tournament settings
 		TournamentLoad();
+		
+		// TrocarTempo settings
+		TrocarTempoLoad();
 	}
 	
 	public static final void loadLoginServer()

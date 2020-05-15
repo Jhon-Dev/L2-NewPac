@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.Online;
+import net.sf.l2j.gameserver.handler.voicedcommandhandlers.TrocarTempo;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.Stats;
 
 public class VoicedCommandHandler
@@ -18,9 +19,9 @@ public class VoicedCommandHandler
 	protected VoicedCommandHandler()
 	{
 		// coloque aqui os comandos
-		
 		registerHandler(new Online());
 		registerHandler(new Stats());
+		registerHandler(new TrocarTempo());
 	}
 	
 	public void registerHandler(IVoicedCommandHandler handler)

@@ -1775,6 +1775,11 @@ public final class Player extends Playable
 		_onlineBeginTime = System.currentTimeMillis();
 	}
 	
+	public long getOnlineTime()
+	{
+		return _onlineTime;
+	}
+	
 	/**
 	 * Return the PcInventory Inventory of the Player contained in _inventory.
 	 */
