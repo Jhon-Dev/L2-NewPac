@@ -143,7 +143,7 @@ public abstract class Item
 	protected List<Condition> _preConditions;
 	private IntIntHolder[] _skillHolder;
 	
-	private final String _icon;
+	private static String _icon = "";
 	
 	private List<Quest> _questEvents = Collections.emptyList();
 	
@@ -619,7 +619,7 @@ public abstract class Item
 		return _questEvents;
 	}
 	
-	public String getIcon()
+	public static String getIcon()
 	{
 		return _icon;
 		
