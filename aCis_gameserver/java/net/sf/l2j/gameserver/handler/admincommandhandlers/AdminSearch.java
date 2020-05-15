@@ -1,4 +1,4 @@
-package custom.admincommandhandlers;
+package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
 
 import java.util.Arrays;
@@ -78,8 +78,9 @@ public class AdminSearch implements IAdminCommandHandler
                name = name.substring(0, 40) + "...";
           
            sb.append("<table width=280 bgcolor=000000><tr>");
-           sb.append("<td width=44 height=41 align=center><table bgcolor=FFFFFF cellpadding=6 cellspacing=\"-5\"><tr><td><button width=32 height=32 back=" + item.getIcon() + " fore=" + item.getIcon() + "></td></tr></table></td>");
-           sb.append("<td width=236>" + name + "<br1><font color=B09878>Item ID : " + item.getItemId() + " " + (item.isQuestItem() ? "(Quest Item)" : "") + "</font></td>");
+           sb.append("<td width=236>" + name + "<br1><font color=B09878>Item ID : " + item.getItemId() + " " + (item.isQuestItem() ? "(Quest Item)" : "") + "</font></td>");          
+           sb.append("<td width=44 height=41 align=center><table bgcolor=FFFFFF cellpadding=6 cellspacing=\"-5\"><tr><td><button width=32 height=32 back=" + Item.getIcon() + " fore=" + Item.getIcon() + "></td></tr></table></td>");
+
            sb.append("</tr></table><img src=L2UI.SquareGray width=280 height=1>");
            row++;
        }
