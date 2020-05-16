@@ -46,7 +46,7 @@ public class LoginServer
 		new File("./log/error").mkdir();
 		
 		// Create input stream for log file -- or store file data into memory
-		try (InputStream is = new FileInputStream(new File("config/logging.properties")))
+		try (InputStream is = new FileInputStream(new File("config/logging.ini")))
 		{
 			LogManager.getLogManager().readConfiguration(is);
 		}

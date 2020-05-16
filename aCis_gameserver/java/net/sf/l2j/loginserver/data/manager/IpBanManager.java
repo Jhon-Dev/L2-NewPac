@@ -19,7 +19,7 @@ public class IpBanManager
 	protected IpBanManager()
 	{
 		// Load file.
-		final Path file = Paths.get("config", "banned_ips.properties");
+		final Path file = Paths.get("config", "banned_ips.ini");
 		if (file == null)
 		{
 			LOGGER.warn("banned_ips.properties is missing. Ban listing is skipped.");
@@ -43,7 +43,7 @@ public class IpBanManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.error("Error while reading banned_ips.properties.", e);
+			LOGGER.error("Error while reading banned_ips.ini.", e);
 		}
 		LOGGER.info("Loaded {} banned IP(s).", _bannedIps.size());
 	}
