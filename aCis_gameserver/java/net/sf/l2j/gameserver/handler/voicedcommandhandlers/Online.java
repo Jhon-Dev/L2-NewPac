@@ -15,9 +15,11 @@ public class Online implements IVoicedCommandHandler
 	@Override
 	public boolean useVoicedCommand(String command, Player player, String target)
 	{
+		if (Config.ONLINE_PLAYER)
+			
 		if (command.equalsIgnoreCase("online"))
 			player.sendMessage("There are " + World.getInstance().getAllPlayersCount() * 1 + " player(s) online.");
-		return Config.ONLINE_PLAYER;
+		return true;
 	}
 	
 	@Override

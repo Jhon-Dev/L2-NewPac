@@ -25,29 +25,29 @@ public final class Config
 {
 	private static final CLogger LOGGER = new CLogger(Config.class.getName());
 	
-	public static final String CLANS_FILE = "./config/clans.properties";
-	public static final String EVENTS_FILE = "./config/events.properties";
-	public static final String GEOENGINE_FILE = "./config/geoengine.properties";
+	public static final String CLANS_FILE = "./config/clans.ini";
+	public static final String EVENTS_FILE = "./config/events.ini";
+	public static final String GEOENGINE_FILE = "./config/geoengine.ini";
 	public static final String HEXID_FILE = "./config/hexid.txt";
-	public static final String LOGIN_CONFIGURATION_FILE = "./config/loginserver.properties";
-	public static final String NPCS_FILE = "./config/npcs.properties";
-	public static final String PLAYERS_FILE = "./config/players.properties";
-	public static final String SERVER_FILE = "./config/server.properties";
-	public static final String SIEGE_FILE = "./config/siege.properties";
+	public static final String LOGIN_CONFIGURATION_FILE = "./config/loginserver.ini";
+	public static final String NPCS_FILE = "./config/npcs.ini";
+	public static final String PLAYERS_FILE = "./config/players.ini";
+	public static final String SERVER_FILE = "./config/server.ini";
+	public static final String SIEGE_FILE = "./config/siege.ini";
 	// --------------------------------------------------
 	// Customs Folders
 	// -------------------------------------------------
-	public static final String SERVER_CUSTOM = "./config/custom/Mods/Server.properties";
-	public static final String COMMANDS = "./config/custom/Mods/Commands.properties";
-	public static final String CAPTCHA = "./config/custom/protect/Captcha.properties";
-	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.properties";
-	public static final String NEWCHAR = "./config/custom/Mods/NewChar.properties";
-	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.properties";
-	public static final String BUFF = "./config/custom/Mods/Buff.properties";
-	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.properties";
-	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/AbnormalEffect.properties";
-	public static final String TOURNAMENTE_FILE = "./config/custom/Events/Tournament.properties";
-	public static final String TROCAR_TEMPO = "./config/custom/Events/TrocarTempo.properties";
+	public static final String SERVER_CUSTOM = "./config/custom/Mods/Server.ini";
+	public static final String COMMANDS = "./config/custom/Mods/Commands.ini";
+	public static final String CAPTCHA = "./config/custom/protect/Captcha.ini";
+	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.ini";
+	public static final String NEWCHAR = "./config/custom/Mods/NewChar.ini";
+	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.ini";
+	public static final String BUFF = "./config/custom/Mods/Buff.ini";
+	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.ini";
+	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/AbnormalEffect.ini";
+	public static final String TOURNAMENTE_FILE = "./config/custom/Events/Tournament.ini";
+	public static final String TROCAR_TEMPO = "./config/custom/Events/TrocarTempo.ini";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -138,6 +138,10 @@ public final class Config
 	
 	/** Commands */
 	public static boolean ONLINE_PLAYER;
+	public static boolean STATUS;
+	public static boolean ONLINETIME;
+	public static int ID_REWARD;
+	public static int MIN_PVP;
 	
 	/** Captcha */
 	public static boolean BOTS_PREVENTION;
@@ -183,11 +187,6 @@ public final class Config
 	public static int ENCHANT_EFFECT_1;
 	public static int ENCHANT_EFFECT_2;
 	public static int ENCHANT_EFFECT_3;
-	
-	/** Trocar Tempo */
-	public static boolean CUSTON_ONLINETIME;
-	public static int ID_REWARD;
-	public static int MIN_PVP;
 	
 	/** Tournament Configs */
 	public static boolean TOURNAMENT_EVENT_START;
@@ -1564,7 +1563,12 @@ public final class Config
 	private static final void CommandsLoad()
 	{
 		final ExProperties commands = initProperties(COMMANDS);
-		ONLINE_PLAYER = Boolean.parseBoolean(commands.getProperty("OnlinePlayer", "False"));
+		ONLINE_PLAYER = commands.getProperty("OnlinePlayer", false);
+		STATUS = commands.getProperty("Status", false);
+		ONLINETIME = commands.getProperty("OnlineReward", false);
+		ID_REWARD = commands.getProperty("IdReward", 57);
+		MIN_PVP = commands.getProperty("MinPvp", 200);
+
 	}
 	
 	private static final void CaptchaLoad()
@@ -1654,15 +1658,7 @@ public final class Config
 		ENCHANT_EFFECT_2 = Effects.getProperty("EnchantEffect2", 16);
 		ENCHANT_EFFECT_3 = Effects.getProperty("EnchantEffect3", 25);
 	}
-	
-	private static final void TrocarTempoLoad()
-	{
-		final ExProperties TrocarTempo = initProperties(TROCAR_TEMPO);
-		CUSTON_ONLINETIME = TrocarTempo.getProperty("OnlineReward", false);
-		ID_REWARD = TrocarTempo.getProperty("IdReward", 57);
-		MIN_PVP = TrocarTempo.getProperty("MinPvp", 200);
-	}
-	
+
 	private static final void TournamentLoad()
 	{
 		final ExProperties Tournament = initProperties(Config.TOURNAMENTE_FILE);
@@ -3228,9 +3224,6 @@ public final class Config
 		
 		// Tournament settings
 		TournamentLoad();
-		
-		// TrocarTempo settings
-		TrocarTempoLoad();
 	}
 	
 	public static final void loadLoginServer()

@@ -23,6 +23,8 @@ public class TrocarTempo implements IVoicedCommandHandler
 	{
 		int _calcule = (int) arredondaValor(1, activeChar.getOnlineTime() / 3600);
 		
+		if (Config.ONLINETIME)
+			
 		if (command.startsWith("trocar_tempo"))
 		{
 			if ((_calcule >= 1) && (activeChar.getPvpKills() >= Config.MIN_PVP))
@@ -59,6 +61,7 @@ public class TrocarTempo implements IVoicedCommandHandler
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static double arredondaValor(int casasDecimais, double valor)
 	{
 		BigDecimal decimal = new BigDecimal(valor);

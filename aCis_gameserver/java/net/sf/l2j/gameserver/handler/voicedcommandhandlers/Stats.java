@@ -18,6 +18,7 @@
  */
 package net.sf.l2j.gameserver.handler.voicedcommandhandlers;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -28,7 +29,6 @@ import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class Stats implements IVoicedCommandHandler
 {
-	
 	private static final String[] VOICED_COMMANDS =
 	{
 		"stats"
@@ -37,6 +37,8 @@ public class Stats implements IVoicedCommandHandler
 	@Override
 	public boolean useVoicedCommand(String command, Player player, String target)
 	{
+		if (Config.STATUS)
+			
 		if (command.equalsIgnoreCase("stats"))
 		{
 			if (player.getTarget() == null)
@@ -186,6 +188,5 @@ public class Stats implements IVoicedCommandHandler
 	public String[] getVoicedCommandList()
 	{
 		return VOICED_COMMANDS;
-	}
-	
+	}	
 }
