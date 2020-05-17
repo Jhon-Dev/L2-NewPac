@@ -35,19 +35,24 @@ public final class Config
 	public static final String SERVER_FILE = "./config/server.ini";
 	public static final String SIEGE_FILE = "./config/siege.ini";
 	// --------------------------------------------------
-	// Customs Folders
+	// Customs Mods
 	// -------------------------------------------------
-	public static final String SERVER_CUSTOM = "./config/custom/Mods/Server.ini";
-	public static final String COMMANDS = "./config/custom/Mods/Commands.ini";
-	public static final String CAPTCHA = "./config/custom/protect/Captcha.ini";
-	public static final String ENCHANT_CUSTOM = "./config/custom/mods/Enchant.ini";
-	public static final String NEWCHAR = "./config/custom/Mods/NewChar.ini";
-	public static final String OFF_TRADE = "./config/custom/Mods/OfflineTrade.ini";
-	public static final String BUFF = "./config/custom/Mods/Buff.ini";
-	public static final String DROP_PARTY = "./config/custom/Mods/DropParty.ini";
-	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/AbnormalEffect.ini";
-	public static final String TOURNAMENTE_FILE = "./config/custom/Events/Tournament.ini";
-	public static final String TROCAR_TEMPO = "./config/custom/Events/TrocarTempo.ini";
+	public static final String SERVER_CUSTOM = "./config/custom/Mods/1-Server.ini";
+	public static final String COMMANDS = "./config/custom/Mods/2-Commands.ini";
+	public static final String ENCHANT_CUSTOM = "./config/custom/mods/3-Enchant.ini";
+	public static final String NEWCHAR = "./config/custom/Mods/4-NewChar.ini";
+	public static final String BUFF = "./config/custom/Mods/5-Buff.ini";
+	public static final String OFF_TRADE = "./config/custom/Mods/7-OfflineTrade.ini";
+	public static final String DROP_PARTY = "./config/custom/Mods/8-DropParty.ini";
+	public static final String ABNORMAL_EFFECT = "./config/custom/Mods/9-AbnormalEffect.ini";
+	// --------------------------------------------------
+	// Protect Configs
+	// -------------------------------------------------
+	public static final String CAPTCHA = "./config/custom/protect/1-Captcha.ini";
+	// --------------------------------------------------
+	// Events Configs
+	// -------------------------------------------------
+	public static final String TOURNAMENTE_FILE = "./config/custom/Events/1-Tournament.ini";
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -1568,7 +1573,7 @@ public final class Config
 		ONLINETIME = commands.getProperty("OnlineReward", false);
 		ID_REWARD = commands.getProperty("IdReward", 57);
 		MIN_PVP = commands.getProperty("MinPvp", 200);
-
+		
 	}
 	
 	private static final void CaptchaLoad()
@@ -1658,7 +1663,7 @@ public final class Config
 		ENCHANT_EFFECT_2 = Effects.getProperty("EnchantEffect2", 16);
 		ENCHANT_EFFECT_3 = Effects.getProperty("EnchantEffect3", 25);
 	}
-
+	
 	private static final void TournamentLoad()
 	{
 		final ExProperties Tournament = initProperties(Config.TOURNAMENTE_FILE);

@@ -107,6 +107,7 @@ import custom.data.sql.OfflineTradersData;
 import custom.events.Arena2x2;
 import custom.events.Arena4x4;
 import custom.events.Arena9x9;
+import custom.events.ChristmasEvent;
 import custom.events.main.ArenaEvent;
 import custom.events.main.ArenaTask;
 
@@ -297,6 +298,9 @@ public class GameServer
 		}
 		else
 			LOGGER.info("Tournament Event is disabled");
+		
+		StringUtil.printSection("Christmas Event");
+		LOGGER.info("Loaded " + ChristmasEvent.getInstance().rewardsSize() + " Rewards!");
 		
 		StringUtil.printSection("Handlers");
 		LOGGER.info("Loaded {} admin command handlers.", AdminCommandHandler.getInstance().size());
