@@ -1,11 +1,8 @@
 # L2-NewPac
 
-
-# =================================================================#
-#             IMPORTANT CUSTOMER INFORMATION    BY: Jhonatan Nuss  #
-#                     http://JnCenter.com .br                      #
-#                    Project based on Acis 390                     #
-# =================================================================#
+             IMPORTANT CUSTOMER INFORMATION    BY: Jhonatan Nuss  
+                     http://JnCenter.com .br                      
+                    Project based on Acis 390                     
 
 #--MODS--#
 
